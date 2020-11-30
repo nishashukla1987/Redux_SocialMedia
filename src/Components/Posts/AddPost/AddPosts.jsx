@@ -49,7 +49,7 @@ export default function AddPost() {
               dispatch(addPost(postMessage));
             }}
           >
-            <Link to='/'>Post</Link>
+            <Link to='/nisa'>Post</Link>
           </Button>
         </CardActions>
       </form>

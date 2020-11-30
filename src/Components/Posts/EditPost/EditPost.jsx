@@ -48,7 +48,7 @@ export default function Editpost({ post, setSelected }) {
               setSelected(-1);
             }}
           >
-            <Link to='/'>SavePost </Link>
+            <Link to='/nisa'>SavePost </Link>
           </Button>
         </CardActions>
       </form>

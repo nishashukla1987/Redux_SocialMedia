@@ -8,6 +8,9 @@ import Posts from './Components/Posts/Posts';
 import { logout } from './Redux/Action/authAction';
 import { getPost } from './Redux/Action/postAction';
 import Editpost from './Components/Posts/EditPost/EditPost';
+import Navigation from './Components/Container/Navigation/Navigation';
+import AuthButton from './Components/Auth/AuthInfo/AuthButton';
+import IfAuth from './ifAuth';
 
 function App() {
   const dispatch = useDispatch();
@@ -18,30 +21,37 @@ function App() {
 
   return (
     <div>
-      <Switch>
-        <Route path='/auth/login'>
-          <Login />
-        </Route>
-        <Route path='/auth/register'>
-          <Register />
-        </Route>
+      <AuthButton />
 
-        <Route path='/post/add'>
-          <AddPost />
-        </Route>
+      <IfAuth>
+        <Navigation />
 
-        <Route exact path='/'>
-          <Posts />
-        </Route>
-      </Switch>
+        <Switch>
+          <Route path='/auth/login'>
+            <Login />
+          </Route>
 
-      <button
+          <Route path='/auth/register'>
+            <Register />
+          </Route>
+
+          <Route path='/post/add'>
+            <AddPost />
+          </Route>
+
+          <Route exact path='/nisa'>
+            <Posts />
+          </Route>
+        </Switch>
+      </IfAuth>
+
+      {/* <button
         onClick={() => {
           dispatch(logout(state));
         }}
       >
         Logout
-      </button>
+      </button> */}
     </div>
   );
 }
