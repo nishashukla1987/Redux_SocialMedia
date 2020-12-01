@@ -16,6 +16,7 @@ export default function Editpost({ post, setSelected }) {
   const dispatch = useDispatch();
   const [editPostMessage, setEditPostMessage] = useState({
     message: post.message,
+    id: post.id,
   });
 
   return (
@@ -48,7 +49,7 @@ export default function Editpost({ post, setSelected }) {
               setSelected(-1);
             }}
           >
-            <Link to='/nisa'>SavePost </Link>
+            SavePost
           </Button>
         </CardActions>
       </form>

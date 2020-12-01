@@ -31,6 +31,14 @@ const authReducer = (state = defaultState, action) => {
         refreshToken: action.refreshToken,
       };
 
+    case 'UNREGISTER':
+      localStorage.removeItem('sample');
+      return {
+        userData: [],
+        token: false,
+        refreshToken: false,
+      };
+
     default:
       return state;
   }

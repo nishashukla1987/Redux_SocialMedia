@@ -11,10 +11,12 @@ import Container from '@material-ui/core/Container';
 import { useStyles } from './styles';
 import { useDispatch } from 'react-redux';
 import { login } from '../../../Redux/Action/authAction';
+import { useHistory } from 'react-router-dom';
 
 function Login() {
   const classes = useStyles();
   const dispatch = useDispatch();
+  const history = useHistory();
 
   const [state, setState] = useState({
     email: 'nisha@email.com',
@@ -62,7 +64,7 @@ function Login() {
             className={classes.submit}
             onClick={(e) => {
               e.preventDefault();
-              dispatch(login(state));
+              dispatch(login(state, history));
             }}
           >
             Sign In
