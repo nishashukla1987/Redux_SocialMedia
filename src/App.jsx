@@ -27,14 +27,6 @@ function App() {
         <Navigation />
 
         <Switch>
-          <Route path='/auth/login'>
-            <Login />
-          </Route>
-
-          <Route path='/auth/register'>
-            <Register />
-          </Route>
-
           <Route path='/post/add'>
             <AddPost />
           </Route>

@@ -29,8 +29,11 @@ export const addPost = (postData) => async (dispatch) => {
 };
 
 export const editPost = (postData) => async (dispatch) => {
+  console.log(postData);
   try {
-    const response = await axios.post(`${url}/post`, postData);
+    const response = await axios.patch(`${url}/post/${postData.id}`, {
+      message: postData.message,
+    });
     console.log(response.data);
     dispatch({
       type: 'EDIT_POST',

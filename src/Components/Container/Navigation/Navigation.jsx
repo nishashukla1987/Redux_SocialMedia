@@ -19,13 +19,13 @@ import HomeIcon from '@material-ui/icons/Home';
 import GroupIcon from '@material-ui/icons/Group';
 import Logo from '../../Logo/croped.png';
 import { getPost } from '../../../Redux/Action/postAction';
-import { logout } from '../../../Redux/Action/authAction';
+import { logout, unregister } from '../../../Redux/Action/authAction';
 import Axios from 'axios';
 
 export default function Navigation() {
   const dispatch = useDispatch();
 
-  const state = useSelector((state) => state.auth.refreshToken);
+  const state = useSelector((state) => state.auth);
   useEffect(() => {
     dispatch(getPost());
   }, [dispatch]);
@@ -97,10 +97,18 @@ export default function Navigation() {
 
       <MenuItem
         onClick={() => {
-          dispatch(logout(state));
+          dispatch(logout(state.refreshToken));
         }}
       >
         Logout
+      </MenuItem>
+
+      <MenuItem
+        onClick={() => {
+          dispatch(unregister(state.userData.user.id, state.token));
+        }}
+      >
+        Unregister
       </MenuItem>
     </Menu>
   );
