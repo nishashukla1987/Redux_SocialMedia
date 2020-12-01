@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Route, Switch } from 'react-router-dom';
 import AddPost from './Components/Posts/AddPost/AddPosts';
-import Posts from './Components/Posts/Posts';
+import Posts from './Components/Posts/ViewPost/Posts';
 import { getPost } from './Redux/Action/postAction';
 import Navigation from './Components/Container/Navigation/Navigation';
 import AuthButton from './Components/Auth/AuthInfo/AuthButton';

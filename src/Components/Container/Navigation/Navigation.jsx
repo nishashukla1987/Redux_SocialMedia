@@ -22,6 +22,8 @@ import { getPost } from '../../../Redux/Action/postAction';
 import { logout, unregister } from '../../../Redux/Action/authAction';
 
 export default function Navigation() {
+  const classes = useStyles();
+
   const dispatch = useDispatch();
 
   const state = useSelector((state) => state.auth);
@@ -29,7 +31,6 @@ export default function Navigation() {
     dispatch(getPost());
   }, [dispatch]);
 
-  const classes = useStyles();
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
 
@@ -67,6 +68,7 @@ export default function Navigation() {
       <MenuItem onClick={handleMenuClose}>
         <Link to='/profile'>Profile</Link>
       </MenuItem>
+
       <MenuItem onClick={handleMenuClose}>
         <Link to='/setting'>Setting</Link>
       </MenuItem>
@@ -112,6 +114,7 @@ export default function Navigation() {
         </IconButton>
         <p>Messages</p>
       </MenuItem>
+
       <MenuItem>
         <IconButton aria-label='show 11 new notifications' color='inherit'>
           <Badge badgeContent={11} color='secondary'>
@@ -120,6 +123,7 @@ export default function Navigation() {
         </IconButton>
         <p>Notifications</p>
       </MenuItem>
+
       <MenuItem onClick={handleProfileMenuOpen}>
         <IconButton
           aria-label='account of current user'
@@ -144,6 +148,7 @@ export default function Navigation() {
             <div className={classes.searchIcon}>
               <SearchIcon />
             </div>
+
             <InputBase
               placeholder='Search…'
               classes={{
@@ -159,6 +164,7 @@ export default function Navigation() {
               <HomeIcon />
             </Link>
           </div>
+
           <div className={classes.linkicon}>
             <Link to='/user-groups'>
               <GroupIcon />
