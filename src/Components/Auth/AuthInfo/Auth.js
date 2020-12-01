@@ -7,15 +7,15 @@ function Auth() {
   return (
     <div>
       <Switch>
-        <Route path='/auth/login'>
+        <Route path='/login'>
           <Login />
         </Route>
 
-        <Route path='/auth/register'>
+        <Route path='/register'>
           <Register />
         </Route>
 
-        <Redirect to='/auth/login' />
+        <Redirect to='/login' />
       </Switch>
     </div>
   );

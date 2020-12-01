@@ -20,7 +20,6 @@ import GroupIcon from '@material-ui/icons/Group';
 import Logo from '../../Logo/croped.png';
 import { getPost } from '../../../Redux/Action/postAction';
 import { logout, unregister } from '../../../Redux/Action/authAction';
-import Axios from 'axios';
 
 export default function Navigation() {
   const dispatch = useDispatch();
@@ -54,15 +53,6 @@ export default function Navigation() {
     setMobileMoreAnchorEl(event.currentTarget);
   };
 
-  // async function logout(userData) {
-  //   await Axios.post('/api/auth/logout', {
-  //     method: 'POST',
-  //     headers: { 'content-type': 'application/json' },
-  //   });
-  //   userData = false;
-  //   dispatch({ type: 'LOGOUT' });
-  // }
-
   const menuId = 'primary-search-account-menu';
   const renderMenu = (
     <Menu
@@ -80,20 +70,10 @@ export default function Navigation() {
       <MenuItem onClick={handleMenuClose}>
         <Link to='/setting'>Setting</Link>
       </MenuItem>
-      <MenuItem onClick={handleMenuClose}>
-        <Link to='/auth/register'>Register</Link>
-      </MenuItem>
-      <MenuItem onClick={handleMenuClose}>
-        <Link to='/auth/login'>Login</Link>
-      </MenuItem>
+
       <MenuItem onClick={handleMenuClose}>
         <Link to='/post/add'>AddPost</Link>
       </MenuItem>
-      {/* <MenuItem onClick={handleMenuClose}>
-        <Link to='/nisa'>ViewPost</Link>
-      </MenuItem> */}
-
-      {/* <MenuItem onClick={logout}>Log Out</MenuItem> */}
 
       <MenuItem
         onClick={() => {

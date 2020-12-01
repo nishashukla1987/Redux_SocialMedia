@@ -22,6 +22,7 @@ function Posts() {
         return (
           <div key={index}>
             <h1>{post.message}</h1>
+
             <IconButton
               onClick={() => {
                 dispatch(removePost(post.id));
