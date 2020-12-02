@@ -44,6 +44,7 @@ function App() {
       >
         Logout
       </button> */}
+      <h1>sami</h1>
     </div>
   );
 }
