@@ -4,6 +4,9 @@ export const useStyles = makeStyles((theme) => ({
   root: {
     maxWidth: 600,
     marginBottom: '15px',
+    '& .MuiCardHeader-title.MuiTypography-body2': {
+      fontWeight: 'bold',
+    },
   },
   media: {
     height: 0,
