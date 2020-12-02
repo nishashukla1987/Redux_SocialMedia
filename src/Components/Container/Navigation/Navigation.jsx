@@ -20,6 +20,7 @@ import GroupIcon from '@material-ui/icons/Group';
 import Logo from '../../Logo/croped.png';
 import { getPost } from '../../../Redux/Action/postAction';
 import { logout, unregister } from '../../../Redux/Action/authAction';
+import Search from '../../Search/Search';
 
 export default function Navigation() {
   const classes = useStyles();
@@ -145,18 +146,7 @@ export default function Navigation() {
           <img src={Logo} alt='logo' />
 
           <div className={classes.search}>
-            <div className={classes.searchIcon}>
-              <SearchIcon />
-            </div>
-
-            <InputBase
-              placeholder='Search…'
-              classes={{
-                root: classes.inputRoot,
-                input: classes.inputInput,
-              }}
-              inputProps={{ 'aria-label': 'search' }}
-            />
+            <Search />
           </div>
 
           <div className={classes.linkicon}>
