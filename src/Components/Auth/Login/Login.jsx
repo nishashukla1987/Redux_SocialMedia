@@ -3,7 +3,7 @@ import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
-import Link from '@material-ui/core/Link';
+import { Link } from '@material-ui/core';
 import Grid from '@material-ui/core/Grid';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
@@ -69,10 +69,11 @@ function Login() {
           >
             Sign In
           </Button>
+
           <Grid container>
             <Grid item xs></Grid>
             <Grid item>
-              <Link href='/auth/register' variant='body2'>
+              <Link href='/register' variant='body2'>
                 {"Don't have an account? Sign Up"}
               </Link>
             </Grid>

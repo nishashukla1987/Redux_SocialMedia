@@ -20,9 +20,10 @@ import GroupIcon from '@material-ui/icons/Group';
 import Logo from '../../Logo/croped.png';
 import { getPost } from '../../../Redux/Action/postAction';
 import { logout, unregister } from '../../../Redux/Action/authAction';
-import Axios from 'axios';
 
 export default function Navigation() {
+  const classes = useStyles();
+
   const dispatch = useDispatch();
 
   const state = useSelector((state) => state.auth);
@@ -30,7 +31,6 @@ export default function Navigation() {
     dispatch(getPost());
   }, [dispatch]);
 
-  const classes = useStyles();
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
 
@@ -54,15 +54,6 @@ export default function Navigation() {
     setMobileMoreAnchorEl(event.currentTarget);
   };
 
-  // async function logout(userData) {
-  //   await Axios.post('/api/auth/logout', {
-  //     method: 'POST',
-  //     headers: { 'content-type': 'application/json' },
-  //   });
-  //   userData = false;
-  //   dispatch({ type: 'LOGOUT' });
-  // }
-
   const menuId = 'primary-search-account-menu';
   const renderMenu = (
     <Menu
@@ -77,23 +68,14 @@ export default function Navigation() {
       <MenuItem onClick={handleMenuClose}>
         <Link to='/profile'>Profile</Link>
       </MenuItem>
+
       <MenuItem onClick={handleMenuClose}>
         <Link to='/setting'>Setting</Link>
       </MenuItem>
-      <MenuItem onClick={handleMenuClose}>
-        <Link to='/auth/register'>Register</Link>
-      </MenuItem>
-      <MenuItem onClick={handleMenuClose}>
-        <Link to='/auth/login'>Login</Link>
-      </MenuItem>
+
       <MenuItem onClick={handleMenuClose}>
         <Link to='/post/add'>AddPost</Link>
       </MenuItem>
-      {/* <MenuItem onClick={handleMenuClose}>
-        <Link to='/nisa'>ViewPost</Link>
-      </MenuItem> */}
-
-      {/* <MenuItem onClick={logout}>Log Out</MenuItem> */}
 
       <MenuItem
         onClick={() => {
@@ -132,6 +114,7 @@ export default function Navigation() {
         </IconButton>
         <p>Messages</p>
       </MenuItem>
+
       <MenuItem>
         <IconButton aria-label='show 11 new notifications' color='inherit'>
           <Badge badgeContent={11} color='secondary'>
@@ -140,6 +123,7 @@ export default function Navigation() {
         </IconButton>
         <p>Notifications</p>
       </MenuItem>
+
       <MenuItem onClick={handleProfileMenuOpen}>
         <IconButton
           aria-label='account of current user'
@@ -164,6 +148,7 @@ export default function Navigation() {
             <div className={classes.searchIcon}>
               <SearchIcon />
             </div>
+
             <InputBase
               placeholder='Search…'
               classes={{
@@ -179,6 +164,7 @@ export default function Navigation() {
               <HomeIcon />
             </Link>
           </div>
+
           <div className={classes.linkicon}>
             <Link to='/user-groups'>
               <GroupIcon />

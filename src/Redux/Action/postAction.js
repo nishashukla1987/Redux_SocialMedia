@@ -28,6 +28,22 @@ export const addPost = (postData) => async (dispatch) => {
   }
 };
 
+export const commentPost = (postData) => async (dispatch) => {
+  try {
+    const response = await axios.post(`${url}/post/${postData.id}`, {
+      message: postData.message,
+    });
+    console.log(response.data);
+    dispatch({
+      type: 'COMMENT_POST',
+      postData: response.data,
+    });
+    await getPost()(dispatch);
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 export const editPost = (postData) => async (dispatch) => {
   console.log(postData);
   try {
@@ -53,6 +69,20 @@ export const removePost = (postId) => async (dispatch) => {
       type: 'REMOVE_POST',
     });
     await getPost()(dispatch);
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const likePost = (postId) => async (dispatch) => {
+  console.log(postId);
+  try {
+    const response = await axios.put(`${url}/like/post/${postId}/like`, {});
+    console.log(response.data);
+    dispatch({
+      type: 'LIKE_POST',
+      postData: response.data,
+    });
   } catch (error) {
     console.log(error);
   }

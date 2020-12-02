@@ -11,10 +11,13 @@ import Container from '@material-ui/core/Container';
 import { useStyles } from './styles';
 import { useDispatch } from 'react-redux';
 import { register } from '../../../Redux/Action/authAction';
+import { useHistory } from 'react-router-dom';
 
 function Register() {
   const classes = useStyles();
   const dispatch = useDispatch();
+  const history = useHistory();
+
   const [state, setState] = useState({
     name: '',
     email: '',
@@ -69,7 +72,7 @@ function Register() {
             className={classes.submit}
             onClick={(e) => {
               e.preventDefault();
-              dispatch(register(state));
+              dispatch(register(state, history));
             }}
           >
             Sign In
@@ -77,7 +80,7 @@ function Register() {
           <Grid container>
             <Grid item xs></Grid>
             <Grid item>
-              <Link href='/auth/login' variant='body2'>
+              <Link href='/login' variant='body2'>
                 {'Already have an account? Login'}
               </Link>
             </Grid>

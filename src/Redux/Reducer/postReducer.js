@@ -16,7 +16,16 @@ const postReducer = (state = defaultState, action) => {
         postData: [action.postData, ...state.postData],
       };
 
+    case 'COMMENT_POST':
+      return {
+        ...state,
+        postData: [action.postData, ...state.postData],
+      };
+
     case 'EDIT_POST':
+      let newPostData = [...state.postData].map((post) =>
+        post.id == action.postData.id ? action.postData : post
+      );
       return {
         ...state,
         postData: [action.postData, ...state.postData],
@@ -24,6 +33,14 @@ const postReducer = (state = defaultState, action) => {
 
     case 'REMOVE_POST':
       return state;
+
+    case 'LIKE_POST':
+      return {
+        ...state,
+        postData: [...state.postData].map((post) =>
+          post.id == action.postData.id ? action.postData : post
+        ),
+      };
 
     default:
       return state;
