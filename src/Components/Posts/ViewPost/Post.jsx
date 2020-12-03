@@ -49,8 +49,8 @@ function Post({ post, index }) {
           }
           title={post.author.name}
           subheader={
-            'Posted at ' + moment(post.createdAt).format('DD-MMM-YYYY hh:mm:ss')
-            // subheader={'Posted  ' + moment(post.createdAt).fromNow()}
+            //'Posted at ' + moment(post.createdAt).format('DD-MMM-YYYY hh:mm:ss')
+            'Posted  ' + moment(post.createdAt).fromNow()
           }
         />
 
