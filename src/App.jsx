@@ -23,13 +23,8 @@ function App() {
         <Navigation />
 
         <Switch>
-          <Route path='/post/add'>
-            <AddPost />
-          </Route>
-
-          <Route exact path='/nisa'>
-            <Posts />
-          </Route>
+          <Route path='/post/add' component={AddPost} />
+          <Route exact path='/nisa' component={Posts} />
         </Switch>
       </IfAuth>
     </div>

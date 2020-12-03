@@ -144,11 +144,9 @@ export default function Navigation() {
       <AppBar position='static'>
         <Toolbar>
           <img src={Logo} alt='logo' />
-
           <div className={classes.search}>
             <Search />
           </div>
-
           <div className={classes.linkicon}>
             <Link to='/nisa'>
               <HomeIcon />
