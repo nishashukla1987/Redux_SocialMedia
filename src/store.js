@@ -14,12 +14,3 @@ export const store = createStore(
 store.subscribe(() => {
   localStorage.setItem('sample', JSON.stringify(store.getState().auth));
 });
-
-(function () {
-  const token = store.getState().auth.token;
-  if (token) {
-    axios.defaults.headers.common['Authorization'] = token;
-  } else {
-    delete axios.defaults.headers.common['Authorization'];
-  }
-})();

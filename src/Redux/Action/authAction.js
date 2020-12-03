@@ -18,7 +18,7 @@ export const login = (userData, history) => async (dispatch) => {
   }
 };
 
-export const register = (userData) => async (dispatch) => {
+export const register = (userData, history) => async (dispatch) => {
   try {
     const response = await axios.post(`${url}/auth/register`, userData);
     console.log(response.data);
@@ -28,6 +28,7 @@ export const register = (userData) => async (dispatch) => {
       token: response.data.tokens.access.token,
       refreshToken: response.data.tokens.refresh.token,
     });
+    history.push('/');
   } catch (error) {
     console.log(error);
   }

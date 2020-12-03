@@ -1,3 +1,5 @@
+import axios from 'axios';
+
 let defaultState = {
   userData: [],
   token: false,
@@ -5,11 +7,15 @@ let defaultState = {
 };
 
 const localStorageState = JSON.parse(localStorage.getItem('sample'));
-if (localStorageState) defaultState = localStorageState;
-
+if (localStorageState) {
+  defaultState = localStorageState;
+  if (defaultState.token)
+    axios.defaults.headers.common['Authorization'] = defaultState.token;
+}
 const authReducer = (state = defaultState, action) => {
   switch (action.type) {
     case 'LOGIN':
+      axios.defaults.headers.common['Authorization'] = action.token;
       return {
         userData: action.userData,
         token: action.token,
@@ -17,7 +23,7 @@ const authReducer = (state = defaultState, action) => {
       };
 
     case 'LOGOUT':
-      localStorage.removeItem('sample');
+      delete axios.defaults.headers.common['Authorization'];
       return {
         userData: [],
         token: false,
@@ -25,6 +31,7 @@ const authReducer = (state = defaultState, action) => {
       };
 
     case 'REGISTER':
+      axios.defaults.headers.common['Authorization'] = action.token;
       return {
         userData: action.userData,
         token: action.token,
