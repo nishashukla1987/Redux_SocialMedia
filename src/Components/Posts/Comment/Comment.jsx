@@ -26,9 +26,9 @@ export default function Comment({ post, setSelected }) {
         <div>
           <TextField
             id='outlined-multiline-static'
-            label=' Comment on Post '
+            label=' Comment Post '
             multiline
-            rows={4}
+            rows={5}
             value={commentPostMessage.message}
             onChange={(e) =>
               setCommentPostMessage({
