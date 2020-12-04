@@ -67,7 +67,7 @@ export default function Navigation() {
       onClose={handleMenuClose}
     >
       <MenuItem onClick={handleMenuClose}>
-        <Link to='/profile'>Profile</Link>
+        <Link to={`/profile/${state.userData.user.id}`}>Profile</Link>
       </MenuItem>
 
       <MenuItem onClick={handleMenuClose}>
@@ -144,11 +144,9 @@ export default function Navigation() {
       <AppBar position='static'>
         <Toolbar>
           <img src={Logo} alt='logo' />
-
           <div className={classes.search}>
             <Search />
           </div>
-
           <div className={classes.linkicon}>
             <Link to='/nisa'>
               <HomeIcon />

@@ -1,11 +1,14 @@
 import React from 'react';
 import TextField from '@material-ui/core/TextField';
 import Autocomplete from '@material-ui/lab/Autocomplete';
+import SearchIcon from '@material-ui/icons/Search';
 import { searchUser } from '../../Redux/Action/userAction';
 import { useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
+import { useStyles } from '../Container/Navigation/styles';
 
 export default function Search() {
+  const classes = useStyles();
   const history = useHistory();
   const dispatch = useDispatch();
 
@@ -31,6 +34,10 @@ export default function Search() {
         debug={true}
         renderInput={(params) => (
           <TextField
+            classes={{
+              root: classes.inputRoot,
+              input: classes.inputInput,
+            }}
             style={{ marginTop: 0 }}
             {...params}
             size='small'

@@ -5,6 +5,7 @@ import {
   CardHeader,
   TextField,
 } from '@material-ui/core';
+import moment from 'moment';
 import { useState } from 'react';
 import { useStyles } from './styles';
 import { useDispatch } from 'react-redux';
@@ -22,6 +23,12 @@ export default function Comment({ post, setSelected }) {
   return (
     <Card className={classes.root} variant='outlined'>
       <CardHeader title='Comment Post' />
+      {/* title={post.author.name}
+      subheader=
+      {
+        //'Posted at ' + moment(post.createdAt).format('DD-MMM-YYYY hh:mm:ss')
+        'commented  ' + moment(post.updatedAt).fromNow()
+      } */}
       <form noValidate>
         <div>
           <TextField

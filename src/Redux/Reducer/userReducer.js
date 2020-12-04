@@ -1,5 +1,7 @@
 const defaultState = {
   search: {},
+  userData: [],
+  userPosts: [],
 };
 
 const userReducer = (state = defaultState, action) => {
@@ -11,6 +13,15 @@ const userReducer = (state = defaultState, action) => {
 
     case 'SEARCH_CHANGE':
       return { ...state, search: { model, field, match } };
+
+    case 'ADDFRIEND':
+      return { ...state };
+
+    case 'GET_USER':
+      return { ...state, userData: action.userData };
+
+    case 'GETUSER_POST':
+      return { ...state, userPosts: action.userPosts };
 
     default:
       return state;

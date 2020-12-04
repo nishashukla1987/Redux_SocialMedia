@@ -7,6 +7,9 @@ import { getPost } from './Redux/Action/postAction';
 import Navigation from './Components/Container/Navigation/Navigation';
 import AuthButton from './Components/Auth/AuthInfo/AuthButton';
 import IfAuth from './ifAuth';
+import UserProfile from './Components/Profile/UserProfile';
+import MyProfile from './Components/Profile/MyProfile';
+import Friends from './Components/Profile/Friends';
 
 function App() {
   const dispatch = useDispatch();
@@ -23,13 +26,12 @@ function App() {
         <Navigation />
 
         <Switch>
-          <Route path='/post/add'>
-            <AddPost />
-          </Route>
-
-          <Route exact path='/nisa'>
-            <Posts />
-          </Route>
+          <Route path='/post/add' component={AddPost} />
+          <Route exact path='/nisa' component={Posts} />
+          <Route path='/user/:id' component={UserProfile} />
+          <Route path='/profile/:id' component={MyProfile} />
+          <Route path='/:tab' component={MyProfile} />
+          <Route path='/friends' component={Friends} />
         </Switch>
       </IfAuth>
     </div>

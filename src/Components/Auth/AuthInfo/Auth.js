@@ -7,13 +7,9 @@ function Auth() {
   return (
     <div>
       <Switch>
-        <Route path='/login'>
-          <Login />
-        </Route>
+        <Route path='/login' component={Login} />
 
-        <Route path='/register'>
-          <Register />
-        </Route>
+        <Route path='/register' component={Register} />
 
         <Redirect to='/login' />
       </Switch>
