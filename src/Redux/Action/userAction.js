@@ -26,13 +26,40 @@ export const searchUser = (match, type = 'User', field = 'name') => async (
 
 export const getUser = (userId) => async (dispatch) => {
   try {
-    const response = await axios.get(`${URL}/user/${userId}`);
+    const response = await axios.get(`${url}/user/${userId}`);
     console.log(response.data);
     dispatch({
-      type: 'user:profile',
+      type: 'GET_USER',
+      userData: response.data,
+    });
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const getUserPosts = (userId) => async (dispatch) => {
+  try {
+    const response = await axios.get(`${url}/user/posts/${userId}`);
+    console.log(response.data);
+    dispatch({
+      type: 'GETUSER_POST',
+      userPosts: response.data,
+    });
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const addFriend = (userId) => async (dispatch) => {
+  try {
+    const response = await axios.post(`${url}/friends/approve/${userId}`);
+    console.log(response.data);
+    dispatch({
+      type: 'ADDFRIEND',
       userId,
       data: response.data,
     });
+    await getUser(userId)(dispatch);
   } catch (error) {
     console.log(error);
   }

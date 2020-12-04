@@ -67,7 +67,7 @@ export default function Navigation() {
       onClose={handleMenuClose}
     >
       <MenuItem onClick={handleMenuClose}>
-        <Link to='/profile'>Profile</Link>
+        <Link to={`/profile/${state.userData.user.id}`}>Profile</Link>
       </MenuItem>
 
       <MenuItem onClick={handleMenuClose}>

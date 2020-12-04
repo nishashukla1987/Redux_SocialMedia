@@ -7,6 +7,8 @@ import { getPost } from './Redux/Action/postAction';
 import Navigation from './Components/Container/Navigation/Navigation';
 import AuthButton from './Components/Auth/AuthInfo/AuthButton';
 import IfAuth from './ifAuth';
+import UserProfile from './Components/Profile/UserProfile';
+import MyProfile from './Components/Profile/MyProfile';
 
 function App() {
   const dispatch = useDispatch();
@@ -25,6 +27,8 @@ function App() {
         <Switch>
           <Route path='/post/add' component={AddPost} />
           <Route exact path='/nisa' component={Posts} />
+          <Route path='/user/:id' component={UserProfile} />
+          <Route path='/profile/:id' component={MyProfile} />
         </Switch>
       </IfAuth>
     </div>
