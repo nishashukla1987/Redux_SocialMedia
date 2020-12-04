@@ -19,11 +19,11 @@ function UserProfile() {
 
   return (
     <>
-      {user.userData.name}
+      <h1>{user.userData.name}</h1>
+      <h2>{user.userData.email}</h2>
       {user.userPosts.map((post) => (
         <div>
-          <h1>{post.id}</h1>
-          <h1>{post.message}</h1>
+          <h3>{post.message}</h3>
         </div>
       ))}
     </>

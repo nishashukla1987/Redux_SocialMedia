@@ -8,7 +8,9 @@ import { getUser } from '../../Redux/Action/userAction';
 
 function Friends() {
   useEffect((e) => getUser(), []);
+
   const user = useSelector((state) => state.auth.user);
+
   return (
     <Table>
       {user.friends.map((friend) => (

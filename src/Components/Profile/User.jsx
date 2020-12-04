@@ -22,7 +22,7 @@ function User({ userId }) {
           <Avatar src={user.avatar} className={classes.large} />
         </Grid>
         <Grid item>
-          <Typography variant='h5'>{user.name}</Typography>
+          <Typography variant='h1'>{user.name}</Typography>
         </Grid>
       </Grid>
       <IconButton onClick={() => addFriend(user.userId)}>

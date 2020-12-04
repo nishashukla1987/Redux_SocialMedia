@@ -9,6 +9,7 @@ import AuthButton from './Components/Auth/AuthInfo/AuthButton';
 import IfAuth from './ifAuth';
 import UserProfile from './Components/Profile/UserProfile';
 import MyProfile from './Components/Profile/MyProfile';
+import Friends from './Components/Profile/Friends';
 
 function App() {
   const dispatch = useDispatch();
@@ -29,6 +30,8 @@ function App() {
           <Route exact path='/nisa' component={Posts} />
           <Route path='/user/:id' component={UserProfile} />
           <Route path='/profile/:id' component={MyProfile} />
+          <Route path='/:tab' component={MyProfile} />
+          <Route path='/friends' component={Friends} />
         </Switch>
       </IfAuth>
     </div>
