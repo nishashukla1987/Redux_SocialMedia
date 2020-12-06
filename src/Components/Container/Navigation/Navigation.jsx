@@ -117,6 +117,20 @@ export default function Navigation() {
       </MenuItem>
 
       <MenuItem>
+        <IconButton color='inherit'>
+          <HomeIcon />
+          <p>Home</p>
+        </IconButton>
+      </MenuItem>
+
+      <MenuItem>
+        <IconButton color='inherit'>
+          <GroupIcon />
+          <p>Groups</p>
+        </IconButton>
+      </MenuItem>
+
+      <MenuItem>
         <IconButton aria-label='show 11 new notifications' color='inherit'>
           <Badge badgeContent={11} color='secondary'>
             <NotificationsIcon />
@@ -143,20 +157,22 @@ export default function Navigation() {
     <div className={classes.grow}>
       <AppBar position='static'>
         <Toolbar>
-          <img src={Logo} alt='logo' />
+          <img src={Logo} alt='logo' className={classes.logo} />
 
           <Search className={classes.search} />
 
-          <div className={classes.linkicon}>
-            <Link to='/nisa'>
-              <HomeIcon />
-            </Link>
-          </div>
+          <div className={classes.sectionDesktop}>
+            <div className={classes.linkicon}>
+              <Link to='/nisa'>
+                <HomeIcon />
+              </Link>
+            </div>
 
-          <div className={classes.linkicon}>
-            <Link to='/user-groups'>
-              <GroupIcon />
-            </Link>
+            <div className={classes.linkicon}>
+              <Link to='/user-groups'>
+                <GroupIcon />
+              </Link>
+            </div>
           </div>
 
           <div className={classes.grow} />

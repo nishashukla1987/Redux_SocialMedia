@@ -13,6 +13,12 @@ export const useStyles = makeStyles((theme) => ({
       display: 'block',
     },
   },
+
+  logo: {
+    [theme.breakpoints.up('sm')]: {
+      display: 'block',
+    },
+  },
   search: {
     position: 'relative',
     borderRadius: theme.shape.borderRadius,
