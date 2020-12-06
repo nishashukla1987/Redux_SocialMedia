@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { getUser, getUserPosts } from '../../Redux/Action/userAction';
-import Posts from '../Posts/ViewPost/Posts';
+//import Posts from '../Posts/ViewPost/Posts';
 
 function UserProfile() {
   const { id } = useParams();
