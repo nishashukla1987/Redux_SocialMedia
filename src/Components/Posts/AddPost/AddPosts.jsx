@@ -1,43 +1,74 @@
 import {
-  Avatar,
   Button,
   Card,
   CardActions,
-  CardContent,
   CardHeader,
-  CardMedia,
-  Container,
-  IconButton,
-  Paper,
   TextField,
 } from '@material-ui/core';
 import { useState } from 'react';
-import { postTheme } from './styles';
-import { Link } from 'react-router-dom';
 import { useStyles } from './styles';
+import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { addPost } from '../../../Redux/Action/postAction';
+import { DropzoneDialog } from 'material-ui-dropzone';
 
 export default function AddPost() {
   const classes = useStyles();
-  const [postMessage, setPostMessage] = useState({ message: '' });
+
+  const [state, setState] = useState({ message: '', images: [] });
   const dispatch = useDispatch();
+
+  function handleOpen() {
+    setState({ ...state, open: true });
+  }
+
+  function handleSave(images) {
+    const reader = new FileReader();
+
+    if (images[0]) {
+      reader.readAsDataURL(images[0]);
+    }
+    reader.addEventListener(
+      'load',
+      function () {
+        dispatch(addPost(reader.result));
+        setState({ ...state, open: false, images: reader.result });
+      },
+      false
+    );
+  }
+
+  function handleClose() {
+    setState({ ...state, open: false });
+  }
 
   return (
     <Card className={classes.root} variant='outlined'>
       <CardHeader title='Create Post' />
       <form noValidate>
+        <img
+          src={state.images || null}
+          alt=''
+          style={{
+            width: '150px',
+            height: '150px',
+            padding: '20px',
+          }}
+        />
         <div>
           <TextField
             id='outlined-multiline-static'
             label='Write Post Here'
             multiline
             rows={4}
-            value={postMessage.message}
-            onChange={(e) =>
-              setPostMessage({ ...postMessage, message: e.target.value })
-            }
+            value={state.message}
             variant='outlined'
+            onChange={(e) =>
+              setState({
+                ...state,
+                message: e.target.value,
+              })
+            }
           />
         </div>
         <CardActions>
@@ -46,11 +77,21 @@ export default function AddPost() {
             color='primary'
             onClick={(e) => {
               e.preventDefault();
-              dispatch(addPost(postMessage));
+              dispatch(addPost(state));
             }}
           >
             <Link to='/nisa'>Post</Link>
           </Button>
+
+          <Button onClick={handleOpen}>Insert Images</Button>
+          <DropzoneDialog
+            open={state.open}
+            onSave={handleSave}
+            acceptedFiles={['image/jpeg', 'image/png', 'image/bmp']}
+            showPreviews={true}
+            maxFileSize={5000000}
+            onClose={handleClose}
+          />
         </CardActions>
       </form>
     </Card>

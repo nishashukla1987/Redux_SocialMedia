@@ -15,13 +15,14 @@ export const getPost = () => async (dispatch) => {
   }
 };
 
-export const addPost = (postData) => async (dispatch) => {
+export const addPost = (postData, images) => async (dispatch) => {
   try {
-    const response = await axios.post(`${url}/post`, postData);
+    const response = await axios.post(`${url}/post`, postData, images);
     console.log(response.data);
     dispatch({
       type: 'ADD_POST',
       postData: response.data,
+      images,
     });
   } catch (error) {
     console.log(error);

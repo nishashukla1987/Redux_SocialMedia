@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Posts from '../Posts/ViewPost/Posts';
 import { useHistory, useParams } from 'react-router-dom';
-//import { Avatar, Link, Switch, Tab, Tabs } from '@material-ui/core';
 import { useDispatch, useSelector } from 'react-redux';
 import { DropzoneDialog } from 'material-ui-dropzone';
 

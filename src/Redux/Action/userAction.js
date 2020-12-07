@@ -78,3 +78,17 @@ export const changeAvatar = (avatar) => async (dispatch) => {
     console.log(error);
   }
 };
+
+export const addImages = (images) => async (dispatch) => {
+  try {
+    const response = await axios.patch(`${url}/post/`, { images });
+    console.log(response.data);
+    dispatch({
+      type: 'ADD_IMAGES',
+      images: images,
+      userData: response.data,
+    });
+  } catch (error) {
+    console.log(error);
+  }
+};
