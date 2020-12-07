@@ -19,6 +19,14 @@ function UserProfile() {
 
   return (
     <>
+      <img
+        src={user.userData.avatar}
+        style={{
+          width: '150px',
+          height: '150px',
+          padding: '20px',
+        }}
+      />
       <h1>{user.userData.name}</h1>
       <h2>{user.userData.email}</h2>
       {user.userPosts.map((post) => (

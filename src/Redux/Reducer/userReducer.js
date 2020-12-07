@@ -23,6 +23,9 @@ const userReducer = (state = defaultState, action) => {
     case 'ADDFRIEND':
       return { ...state };
 
+    case 'AVATAR':
+      return { ...state, userData: action.userData };
+
     default:
       return state;
   }
