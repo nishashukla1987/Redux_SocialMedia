@@ -75,7 +75,7 @@ function Register() {
               dispatch(register(state, history));
             }}
           >
-            Sign In
+            Register
           </Button>
           <Grid container>
             <Grid item xs></Grid>

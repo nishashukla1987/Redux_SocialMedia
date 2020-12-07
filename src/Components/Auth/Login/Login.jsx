@@ -19,8 +19,8 @@ function Login() {
   const history = useHistory();
 
   const [state, setState] = useState({
-    email: 'nisha@email.com',
-    password: 'nisha123',
+    email: 'nishaShukla@email.com',
+    password: 'nisha1234',
   });
 
   return (
@@ -39,7 +39,7 @@ function Login() {
             margin='normal'
             required
             fullWidth
-            defaultValue='nisha@email.com'
+            defaultValue='nishaShukla@email.com'
             type='email'
             label='Email Address'
             autoFocus
@@ -52,7 +52,7 @@ function Login() {
             fullWidth
             label='Password'
             type='password'
-            defaultValue='nisha123'
+            defaultValue='nisha1234'
             onChange={(e) => setState({ ...state, password: e.target.value })}
           />
 
@@ -67,14 +67,14 @@ function Login() {
               dispatch(login(state, history));
             }}
           >
-            Sign In
+            Login
           </Button>
 
           <Grid container>
             <Grid item xs></Grid>
             <Grid item>
               <Link href='/register' variant='body2'>
-                {"Don't have an account? Sign Up"}
+                {"Don't have an account? Register!"}
               </Link>
             </Grid>
           </Grid>

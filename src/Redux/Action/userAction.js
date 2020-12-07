@@ -64,3 +64,17 @@ export const addFriend = (userId) => async (dispatch) => {
     console.log(error);
   }
 };
+
+export const changeAvatar = (avatar) => async (dispatch) => {
+  try {
+    const response = await axios.patch(`${url}/user/`, { avatar });
+    console.log(response.data);
+    dispatch({
+      type: 'AVATAR',
+
+      userData: response.data,
+    });
+  } catch (error) {
+    console.log(error);
+  }
+};

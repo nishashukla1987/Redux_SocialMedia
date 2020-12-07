@@ -169,7 +169,7 @@ export default function Navigation() {
             </div>
 
             <div className={classes.linkicon}>
-              <Link to='/user-groups'>
+              <Link to='/group'>
                 <GroupIcon />
               </Link>
             </div>
