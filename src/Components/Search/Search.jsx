@@ -21,33 +21,32 @@ export default function Search() {
   };
 
   return (
-    <div style={{ width: 250 }}>
-      <Autocomplete
-        freeSolo
-        style={{ height: '40px', backgroundColor: 'white', borderRadius: 5 }}
-        id='free-solo-2-demo'
-        disableClearable
-        options={list || []}
-        getOptionLabel={(o) => o.name}
-        onInputChange={change}
-        onChange={select}
-        debug={true}
-        renderInput={(params) => (
-          <TextField
-            classes={{
-              root: classes.inputRoot,
-              input: classes.inputInput,
-            }}
-            style={{ marginTop: 0 }}
-            {...params}
-            size='small'
-            placeholder='search...'
-            margin='normal'
-            variant='outlined'
-            InputProps={{ ...params.InputProps, type: 'search' }}
-          />
-        )}
-      />
-    </div>
+    <Autocomplete
+      freeSolo
+      style={{
+        width: '250px',
+        height: '40px',
+        backgroundColor: 'white',
+        borderRadius: 5,
+      }}
+      id='free-solo-2-demo'
+      disableClearable
+      options={list || []}
+      getOptionLabel={(o) => o.name}
+      onInputChange={change}
+      onChange={select}
+      debug={true}
+      renderInput={(params) => (
+        <TextField
+          style={{ marginTop: 0 }}
+          {...params}
+          size='small'
+          placeholder='search...'
+          margin='normal'
+          variant='outlined'
+          InputProps={{ ...params.InputProps, type: 'search' }}
+        />
+      )}
+    />
   );
 }

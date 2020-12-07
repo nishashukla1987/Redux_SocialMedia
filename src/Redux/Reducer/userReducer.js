@@ -14,14 +14,14 @@ const userReducer = (state = defaultState, action) => {
     case 'SEARCH_CHANGE':
       return { ...state, search: { model, field, match } };
 
-    case 'ADDFRIEND':
-      return { ...state };
-
     case 'GET_USER':
       return { ...state, userData: action.userData };
 
     case 'GETUSER_POST':
       return { ...state, userPosts: action.userPosts };
+
+    case 'ADDFRIEND':
+      return { ...state };
 
     default:
       return state;
