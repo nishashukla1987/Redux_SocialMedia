@@ -75,13 +75,29 @@ export const removePost = (postId) => async (dispatch) => {
   }
 };
 
-export const likePost = (postId) => async (dispatch) => {
+export const likePost = (postId, reaction) => async (dispatch) => {
   console.log(postId);
   try {
-    const response = await axios.put(`${url}/like/post/${postId}/like`, {});
+    const response = await axios.put(`${url}/like/post/${postId}/${reaction}`);
     console.log(response.data);
     dispatch({
       type: 'LIKE_POST',
+      postData: response.data,
+    });
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const deleteReaction = (postId, reaction) => async (dispatch) => {
+  console.log(postId);
+  try {
+    const response = await axios.delete(
+      `${url}/like/post/${postId}/${reaction}`
+    );
+    console.log(response.data);
+    dispatch({
+      type: 'DELETE_REACTION',
       postData: response.data,
     });
   } catch (error) {

@@ -4,9 +4,9 @@ import { useHistory, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { DropzoneDialog } from 'material-ui-dropzone';
 
-import Friends from './Friends';
-import AddPost from '../Posts/AddPost/AddPosts';
-import User from './User';
+//import Friends from './Friends';
+//import AddPost from '../Posts/AddPost/AddPosts';
+//import User from './User';
 import {
   changeAvatar,
   getUser,

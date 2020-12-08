@@ -37,6 +37,16 @@ const postReducer = (state = defaultState, action) => {
     case 'LIKE_POST':
       return {
         ...state,
+
+        postData: [...state.postData].map((post) =>
+          post.id == action.postData.id ? action.postData : post
+        ),
+      };
+
+    case 'DELETE_REACTION':
+      return {
+        ...state,
+
         postData: [...state.postData].map((post) =>
           post.id == action.postData.id ? action.postData : post
         ),

@@ -31,7 +31,7 @@ export default function AddPost() {
     reader.addEventListener(
       'load',
       function () {
-        dispatch(addPost(reader.result));
+        //dispatch(addPost(reader.result));
         setState({ ...state, open: false, images: reader.result });
       },
       false
@@ -46,15 +46,17 @@ export default function AddPost() {
     <Card className={classes.root} variant='outlined'>
       <CardHeader title='Create Post' />
       <form noValidate>
-        <img
-          src={state.images || null}
-          alt=''
-          style={{
-            width: '150px',
-            height: '150px',
-            padding: '20px',
-          }}
-        />
+        {state.images.length ? (
+          <img
+            src={state.images || null}
+            alt=''
+            style={{
+              width: '200px',
+              height: '200px',
+              padding: '20px',
+            }}
+          />
+        ) : null}
         <div>
           <TextField
             id='outlined-multiline-static'
