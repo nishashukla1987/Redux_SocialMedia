@@ -57,6 +57,15 @@ function Post({ post, index }) {
         <CardContent>
           <FormControl>
             <Typography variant='body2' color='textSecondary' component='p'>
+              <img
+                src={post.images || null}
+                alt=''
+                style={{
+                  width: '150px',
+                  height: '150px',
+                  padding: '20px',
+                }}
+              />
               {post.message}
             </Typography>
           </FormControl>
