@@ -90,23 +90,28 @@ function Post({ post, index }) {
           }
           title={post.author.name}
           subheader={
-            //'Posted at ' + moment(post.createdAt).format('DD-MMM-YYYY hh:mm:ss')
-            'Posted  ' + moment(post.createdAt).fromNow()
+            'Posted  ' +
+            moment(post.createdAt).fromNow() +
+            (post.createdAt != post.createdAt
+              ? ' (edited ' + moment(post.updatedAt).fromNow() + ')'
+              : '')
           }
         />
 
         <CardContent>
           <FormControl>
             <Typography variant='body2' color='textSecondary' component='p'>
-              <img
-                src={post.images || null}
-                alt=''
-                style={{
-                  width: '200px',
-                  height: '200px',
-                  padding: '20px',
-                }}
-              />
+              {post.images.length ? (
+                <img
+                  src={post.images || null}
+                  alt=''
+                  style={{
+                    width: '200px',
+                    height: '200px',
+                    padding: '20px',
+                  }}
+                />
+              ) : null}
 
               {post.message}
             </Typography>
@@ -164,7 +169,6 @@ function Post({ post, index }) {
 
           <IconButton
             onClick={() => {
-              // dispatch(commentPost(post.id));
               setShowComment(true);
               setSelected(index);
             }}
