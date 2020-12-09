@@ -12,6 +12,8 @@ import { useStyles } from './styles';
 import { useDispatch } from 'react-redux';
 import { login } from '../../../Redux/Action/authAction';
 import { useHistory } from 'react-router-dom';
+import SnackBar from '../AuthInfo/SnackbarStatus';
+import SnackbarStatus from '../AuthInfo/SnackbarStatus';
 
 function Login() {
   const classes = useStyles();
@@ -19,68 +21,70 @@ function Login() {
   const history = useHistory();
 
   const [state, setState] = useState({
-    email: 'nishaShukla@email.com',
+    email: 'nishashukla@email.com',
     password: 'nisha1234',
   });
 
   return (
-    <Container component='main' maxWidth='xs'>
-      <CssBaseline />
-      <div className={classes.paper}>
-        <Avatar className={classes.avatar}>
-          <LockOutlinedIcon />
-        </Avatar>
-        <Typography component='h1' variant='h5'>
-          Sign in
-        </Typography>
-        <form className={classes.form} noValidate>
-          <TextField
-            variant='outlined'
-            margin='normal'
-            required
-            fullWidth
-            defaultValue='nishaShukla@email.com'
-            type='email'
-            label='Email Address'
-            autoFocus
-            onChange={(e) => setState({ ...state, email: e.target.value })}
-          />
-          <TextField
-            variant='outlined'
-            margin='normal'
-            required
-            fullWidth
-            label='Password'
-            type='password'
-            defaultValue='nisha1234'
-            onChange={(e) => setState({ ...state, password: e.target.value })}
-          />
+    <>
+      <Container component='main' maxWidth='xs'>
+        <CssBaseline />
+        <div className={classes.paper}>
+          <Avatar className={classes.avatar}>
+            <LockOutlinedIcon />
+          </Avatar>
+          <Typography component='h1' variant='h5'>
+            Sign in
+          </Typography>
+          <form className={classes.form} noValidate>
+            <TextField
+              variant='outlined'
+              margin='normal'
+              required
+              fullWidth
+              defaultValue='nishashukla@email.com'
+              type='email'
+              label='Email Address'
+              autoFocus
+              onChange={(e) => setState({ ...state, email: e.target.value })}
+            />
+            <TextField
+              variant='outlined'
+              margin='normal'
+              required
+              fullWidth
+              label='Password'
+              type='password'
+              defaultValue='nisha1234'
+              onChange={(e) => setState({ ...state, password: e.target.value })}
+            />
 
-          <Button
-            type='submit'
-            fullWidth
-            variant='contained'
-            color='primary'
-            className={classes.submit}
-            onClick={(e) => {
-              e.preventDefault();
-              dispatch(login(state, history));
-            }}
-          >
-            Login
-          </Button>
+            <Button
+              type='submit'
+              fullWidth
+              variant='contained'
+              color='primary'
+              className={classes.submit}
+              onClick={(e) => {
+                e.preventDefault();
+                dispatch(login(state, history));
+              }}
+            >
+              Login
+            </Button>
 
-          <Grid container>
-            <Grid item xs></Grid>
-            <Grid item>
-              <Link href='/register' variant='body2'>
-                {"Don't have an account? Register!"}
-              </Link>
+            <Grid container>
+              <Grid item xs></Grid>
+              <Grid item>
+                <Link href='/register' variant='body2'>
+                  {"Don't have an account? Register!"}
+                </Link>
+              </Grid>
             </Grid>
-          </Grid>
-        </form>
-      </div>
-    </Container>
+          </form>
+        </div>
+      </Container>
+    </>
   );
 }
 

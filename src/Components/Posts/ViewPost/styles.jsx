@@ -25,4 +25,8 @@ export const useStyles = makeStyles((theme) => ({
     marginTop: '20px',
     backgroundColor: 'theme.palette.background.paper',
   },
+
+  like: {
+    color: 'red',
+  },
 }));

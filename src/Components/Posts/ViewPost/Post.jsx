@@ -8,6 +8,7 @@ import {
   FormControl,
   Hidden,
   IconButton,
+  Popper,
   Typography,
 } from '@material-ui/core';
 import moment from 'moment';
@@ -19,23 +20,63 @@ import MoreVertIcon from '@material-ui/icons/MoreVert';
 import DeleteIcon from '@material-ui/icons/Delete';
 import EditIcon from '@material-ui/icons/Edit';
 import AddCommentIcon from '@material-ui/icons/AddComment';
+//import { FaAngry, AiOutlineFrown } from '@react-icons/all-files/fa/FaBeer';
+import { FaFrown } from 'react-icons/fa';
+import {
+  AiFillLike,
+  AiFillDislike,
+  AiFillHeart,
+  AiFillFrown,
+} from 'react-icons/ai';
 import {
   likePost,
   removePost,
   commentPost,
+  deleteReaction,
 } from '../../../Redux/Action/postAction';
-import Editpost from '../EditPost/EditPost';
 import Comment from '../Comment/Comment';
+import Editpost from '../EditPost/EditPost';
 import { useStyles } from './styles';
+
+import {
+  FaRegGrinSquintTears,
+  FaAngry,
+  FaRegLaughSquint,
+} from 'react-icons/fa';
 
 function Post({ post, index }) {
   const classes = useStyles();
 
   const [showEdit, setShowEdit] = useState(false);
   const [showComment, setShowComment] = useState(false);
-
+  const [images, setImages] = useState({ images: [] });
   const [selected, setSelected] = useState(-1);
   const dispatch = useDispatch();
+
+  const IconForReaction = {
+    Like: <AiFillLike />,
+    Hate: <AiFillDislike />,
+    Love: <AiFillHeart />,
+    Angry: <FaAngry />,
+    Frown: <AiFillFrown />,
+    Rofl: <FaRegGrinSquintTears />,
+    Lol: <FaRegLaughSquint />,
+  };
+
+  const [state, setState] = useState({
+    reaction: {
+      Like: post.yourReactions.Like || false,
+      Hate: post.yourReactions.Hate || false,
+      Frown: post.yourReactions.Frown || false,
+      Angry: post.yourReactions.Angry || false,
+      Lol: post.yourReactions.LOl || false,
+      Love: post.yourReactions.Love || false,
+      Rofl: post.yourReactions.Rolf || false,
+    },
+  });
+
+  const [open, setOpen] = useState(false);
+  const [anchor, setAnchor] = useState(null);
 
   return (
     <>
@@ -61,11 +102,12 @@ function Post({ post, index }) {
                 src={post.images || null}
                 alt=''
                 style={{
-                  width: '150px',
-                  height: '150px',
+                  width: '200px',
+                  height: '200px',
                   padding: '20px',
                 }}
               />
+
               {post.message}
             </Typography>
           </FormControl>
@@ -73,12 +115,31 @@ function Post({ post, index }) {
 
         <CardActions disableSpacing>
           <IconButton
-            onClick={() => {
-              dispatch(likePost(post.id));
+            onClick={(e) => {
+              setOpen(true);
+              setAnchor(e.target);
             }}
           >
             <ThumbUpAltIcon />
           </IconButton>
+
+          <Popper id={post.id} open={open} anchorEl={anchor}>
+            <div className={classes.paper}>
+              {Object.keys(IconForReaction).map((reaction) => (
+                <button
+                  className={post.yourReactions[reaction] ? classes.like : ''}
+                  key={reaction}
+                  onClick={(e) => {
+                    post.yourReactions[reaction]
+                      ? dispatch(deleteReaction(post.id, reaction))
+                      : dispatch(likePost(post.id, reaction));
+                  }}
+                >
+                  {IconForReaction[reaction]}
+                </button>
+              ))}
+            </div>
+          </Popper>
 
           <IconButton aria-label='share'>
             <ShareIcon />
