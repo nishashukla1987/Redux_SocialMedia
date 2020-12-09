@@ -4,6 +4,8 @@ let defaultState = {
   userData: [],
   token: false,
   refreshToken: false,
+  status: false,
+  showStatus: false,
 };
 
 const localStorageState = JSON.parse(localStorage.getItem('sample'));
@@ -20,6 +22,7 @@ const authReducer = (state = defaultState, action) => {
         userData: action.userData,
         token: action.token,
         refreshToken: action.refreshToken,
+        status: action.status,
       };
 
     case 'LOGOUT':
@@ -28,6 +31,7 @@ const authReducer = (state = defaultState, action) => {
         userData: [],
         token: false,
         refreshToken: false,
+        status: true,
       };
 
     case 'REGISTER':
@@ -36,6 +40,7 @@ const authReducer = (state = defaultState, action) => {
         userData: action.userData,
         token: action.token,
         refreshToken: action.refreshToken,
+        status: action.status,
       };
 
     case 'UNREGISTER':
@@ -44,6 +49,22 @@ const authReducer = (state = defaultState, action) => {
         userData: [],
         token: false,
         refreshToken: false,
+      };
+
+    case 'auth:status:show':
+      return {
+        ...state,
+        showStatus: true,
+        status: {
+          code: action.code,
+          message: action.message,
+        },
+      };
+
+    case 'auth:status:hide':
+      return {
+        ...state,
+        showStatus: false,
       };
 
     default:

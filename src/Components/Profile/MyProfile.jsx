@@ -4,9 +4,6 @@ import { useHistory, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { DropzoneDialog } from 'material-ui-dropzone';
 
-//import Friends from './Friends';
-//import AddPost from '../Posts/AddPost/AddPosts';
-//import User from './User';
 import {
   changeAvatar,
   getUser,
@@ -20,7 +17,7 @@ function MyProfile() {
   const authorPost = useSelector((state) => state.users);
   const author = useSelector((state) => state.auth.userData.user);
   const dispatch = useDispatch();
-  const [state, setState] = useState({});
+  const [state, setState] = useState({ images: [] });
 
   useEffect(() => {
     dispatch(getUser(id));
@@ -79,6 +76,17 @@ function MyProfile() {
       <h2>{author.email}</h2>
       {authorPost.userPosts.map((post) => (
         <div>
+          {state.images ? (
+            <img
+              src={post.images}
+              alt=''
+              style={{
+                width: '200px',
+                height: '200px',
+                padding: '20px',
+              }}
+            />
+          ) : null}
           <h3>{post.message}</h3>
         </div>
       ))}

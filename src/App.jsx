@@ -5,13 +5,15 @@ import AddPost from './Components/Posts/AddPost/AddPosts';
 import Posts from './Components/Posts/ViewPost/Posts';
 import { getPost } from './Redux/Action/postAction';
 import Navigation from './Components/Container/Navigation/Navigation';
-import AuthButton from './Components/Auth/AuthInfo/AuthButton';
+import CheckAuth from './Components/Auth/AuthInfo/CheckAuth';
 import IfAuth from './ifAuth';
 import UserProfile from './Components/Profile/UserProfile';
 import MyProfile from './Components/Profile/MyProfile';
+import StatusSnackbar from './Components/Auth/AuthInfo/SnackbarStatus';
 
 function App() {
   const dispatch = useDispatch();
+
   const state = useSelector((state) => state.auth.refreshToken);
   useEffect(() => {
     dispatch(getPost());
@@ -19,8 +21,8 @@ function App() {
 
   return (
     <div>
-      <AuthButton />
-
+      <CheckAuth />
+      <StatusSnackbar />
       <IfAuth>
         <Navigation />
 

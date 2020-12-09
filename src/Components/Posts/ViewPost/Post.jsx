@@ -49,7 +49,7 @@ function Post({ post, index }) {
 
   const [showEdit, setShowEdit] = useState(false);
   const [showComment, setShowComment] = useState(false);
-
+  const [images, setImages] = useState({ images: [] });
   const [selected, setSelected] = useState(-1);
   const dispatch = useDispatch();
 
@@ -59,7 +59,7 @@ function Post({ post, index }) {
     Love: <AiFillHeart />,
     Angry: <FaAngry />,
     Frown: <AiFillFrown />,
-    Rolf: <FaRegGrinSquintTears />,
+    Rofl: <FaRegGrinSquintTears />,
     Lol: <FaRegLaughSquint />,
   };
 
@@ -71,7 +71,7 @@ function Post({ post, index }) {
       Angry: post.yourReactions.Angry || false,
       Lol: post.yourReactions.LOl || false,
       Love: post.yourReactions.Love || false,
-      Rolf: post.yourReactions.Rolf || false,
+      Rofl: post.yourReactions.Rolf || false,
     },
   });
 
@@ -107,6 +107,7 @@ function Post({ post, index }) {
                   padding: '20px',
                 }}
               />
+
               {post.message}
             </Typography>
           </FormControl>
