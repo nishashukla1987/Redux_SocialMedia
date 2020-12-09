@@ -20,16 +20,28 @@ export default function Comment({ post, setSelected }) {
     id: post.id,
   });
 
+  const [state, setState] = useState({ images: [] });
+
   return (
     <Card className={classes.root} variant='outlined'>
-      <CardHeader title='Comment Post' />
-      {/* title={post.author.name}
-      subheader=
-      {
-        //'Posted at ' + moment(post.createdAt).format('DD-MMM-YYYY hh:mm:ss')
-        'commented  ' + moment(post.updatedAt).fromNow()
-      } */}
+      <CardHeader
+        title='Comment Post'
+        //subheader={'updated  ' + moment(post.createdAt).fromNow()}
+      />
+
       <form noValidate>
+        {post.images.length > 0 ? (
+          <img
+            src={post.images || null}
+            alt=''
+            style={{
+              width: '200px',
+              height: '200px',
+              padding: '20px',
+            }}
+          />
+        ) : null}
+
         <div>
           <TextField
             id='outlined-multiline-static'
