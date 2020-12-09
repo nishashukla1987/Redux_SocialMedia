@@ -4,7 +4,10 @@ let defaultState = {
   userData: [],
   token: false,
   refreshToken: false,
-  status: false,
+  status: {
+    code: false,
+    message: false,
+  },
   showStatus: false,
 };
 
@@ -45,11 +48,7 @@ const authReducer = (state = defaultState, action) => {
 
     case 'UNREGISTER':
       localStorage.removeItem('sample');
-      return {
-        userData: [],
-        token: false,
-        refreshToken: false,
-      };
+      return defaultState;
 
     case 'auth:status:show':
       return {
