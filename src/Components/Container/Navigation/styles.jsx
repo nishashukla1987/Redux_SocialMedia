@@ -63,6 +63,13 @@ export const useStyles = makeStyles((theme) => ({
     },
   },
 
+  mobileicon: {
+    '& > a': {
+      color: 'black',
+      textDecoration: 'none',
+    },
+  },
+
   sectionDesktop: {
     display: 'none',
     [theme.breakpoints.up('md')]: {
