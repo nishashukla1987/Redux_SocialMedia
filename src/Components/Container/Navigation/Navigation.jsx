@@ -66,15 +66,15 @@ export default function Navigation() {
       open={isMenuOpen}
       onClose={handleMenuClose}
     >
-      <MenuItem onClick={handleMenuClose}>
+      <MenuItem onClick={handleMenuClose} className={classes.mobileicon}>
         <Link to={`/profile/${state.userData.user.id}`}>Profile</Link>
       </MenuItem>
 
-      <MenuItem onClick={handleMenuClose}>
+      <MenuItem onClick={handleMenuClose} className={classes.mobileicon}>
         <Link to='/setting'>Setting</Link>
       </MenuItem>
 
-      <MenuItem onClick={handleMenuClose}>
+      <MenuItem onClick={handleMenuClose} className={classes.mobileicon}>
         <Link to='/post/add'>AddPost</Link>
       </MenuItem>
 
@@ -107,37 +107,43 @@ export default function Navigation() {
       open={isMobileMenuOpen}
       onClose={handleMobileMenuClose}
     >
-      <MenuItem>
-        <IconButton aria-label='show 4 new mails' color='inherit'>
-          <Badge badgeContent={4} color='secondary'>
-            <MailIcon />
-          </Badge>
-        </IconButton>
-        <p>Messages</p>
-      </MenuItem>
+      <div className={classes.mobileicon}>
+        <Link to='/message'>
+          <MenuItem>
+            <IconButton aria-label='show 4 new mails' color='inherit'>
+              <Badge badgeContent={4} color='secondary'>
+                <MailIcon />
+              </Badge>
+            </IconButton>
+            <p>Messages</p>
+          </MenuItem>
+        </Link>
 
-      <MenuItem>
-        <IconButton color='inherit'>
-          <HomeIcon />
-          <p>Home</p>
-        </IconButton>
-      </MenuItem>
+        <Link to='/nisa'>
+          <MenuItem>
+            <HomeIcon />
+            <p>Home</p>
+          </MenuItem>
+        </Link>
 
-      <MenuItem>
-        <IconButton color='inherit'>
-          <GroupIcon />
-          <p>Groups</p>
-        </IconButton>
-      </MenuItem>
+        <Link to='/group'>
+          <MenuItem color='inherit'>
+            <GroupIcon />
+            <p>Groups</p>
+          </MenuItem>
+        </Link>
 
-      <MenuItem>
-        <IconButton aria-label='show 11 new notifications' color='inherit'>
-          <Badge badgeContent={11} color='secondary'>
-            <NotificationsIcon />
-          </Badge>
-        </IconButton>
-        <p>Notifications</p>
-      </MenuItem>
+        <Link to='/notification'>
+          <MenuItem>
+            <IconButton aria-label='show 11 new notifications' color='inherit'>
+              <Badge badgeContent={11} color='secondary'>
+                <NotificationsIcon />
+              </Badge>
+            </IconButton>
+            <p>Notifications</p>
+          </MenuItem>
+        </Link>
+      </div>
 
       <MenuItem onClick={handleProfileMenuOpen}>
         <IconButton
