@@ -1,4 +1,6 @@
-export const paperTheme = (theme) => ({
+import { makeStyles } from '@material-ui/core/styles';
+
+export const useStyles = makeStyles((theme) => ({
   root: {
     padding: theme.spacing(1),
     margin: theme.spacing(1),
@@ -13,4 +15,8 @@ export const paperTheme = (theme) => ({
     width: 50,
     height: 50,
   },
-});
+
+  myprofile: {
+    marginLeft: '30px',
+  },
+}));

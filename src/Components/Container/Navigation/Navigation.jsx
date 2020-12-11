@@ -121,14 +121,22 @@ export default function Navigation() {
 
         <Link to='/nisa'>
           <MenuItem>
-            <HomeIcon />
+            <IconButton color='inherit'>
+              <Badge>
+                <HomeIcon />
+              </Badge>
+            </IconButton>
             <p>Home</p>
           </MenuItem>
         </Link>
 
         <Link to='/group'>
-          <MenuItem color='inherit'>
-            <GroupIcon />
+          <MenuItem>
+            <IconButton color='inherit'>
+              <Badge>
+                <GroupIcon />
+              </Badge>
+            </IconButton>
             <p>Groups</p>
           </MenuItem>
         </Link>

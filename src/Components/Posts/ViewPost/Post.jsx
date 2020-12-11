@@ -47,6 +47,8 @@ import {
 function Post({ post, index }) {
   const classes = useStyles();
 
+  const author = useSelector((state) => state.auth.userData.user);
+
   const [showEdit, setShowEdit] = useState(false);
   const [showComment, setShowComment] = useState(false);
   const [images, setImages] = useState({ images: [] });
@@ -82,7 +84,9 @@ function Post({ post, index }) {
     <>
       <Card key={index} fullwidth className={classes.root}>
         <CardHeader
-          avatar={<Avatar className={classes.avatar}>N</Avatar>}
+          avatar={
+            <Avatar className={classes.avatar} src={author.avatar}></Avatar>
+          }
           action={
             <IconButton aria-label='settings'>
               <MoreVertIcon />
