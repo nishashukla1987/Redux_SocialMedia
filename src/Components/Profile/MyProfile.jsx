@@ -82,7 +82,7 @@ function MyProfile() {
         <h2>{author.email}</h2>
         {authorPost.userPosts.map((post) => (
           <div>
-            {state.images ? (
+            {post.images.length ? (
               <img
                 src={post.images}
                 alt=''
