@@ -1,18 +1,16 @@
+import React, { useState } from 'react';
 import {
   Avatar,
   Card,
   CardActions,
   CardContent,
   CardHeader,
-  Container,
   FormControl,
-  Hidden,
   IconButton,
   Popper,
   Typography,
 } from '@material-ui/core';
 import moment from 'moment';
-import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import ThumbUpAltIcon from '@material-ui/icons/ThumbUpAlt';
 import ShareIcon from '@material-ui/icons/Share';
@@ -20,8 +18,7 @@ import MoreVertIcon from '@material-ui/icons/MoreVert';
 import DeleteIcon from '@material-ui/icons/Delete';
 import EditIcon from '@material-ui/icons/Edit';
 import AddCommentIcon from '@material-ui/icons/AddComment';
-//import { FaAngry, AiOutlineFrown } from '@react-icons/all-files/fa/FaBeer';
-import { FaFrown } from 'react-icons/fa';
+
 import {
   AiFillLike,
   AiFillDislike,
@@ -31,7 +28,6 @@ import {
 import {
   likePost,
   removePost,
-  commentPost,
   deleteReaction,
 } from '../../../Redux/Action/postAction';
 import Comment from '../Comment/Comment';
@@ -65,6 +61,8 @@ function Post({ post, index }) {
     Lol: <FaRegLaughSquint />,
   };
 
+  //const [open, setOpen] = useState(false);
+
   const [state, setState] = useState({
     reaction: {
       Like: post.yourReactions.Like || false,
@@ -77,14 +75,14 @@ function Post({ post, index }) {
     },
   });
 
-  //const [open, setOpen] = useState(false);
-  const [anchorEl, setAnchorEl] = React.useState(null);
+  const [anchorEl, setAnchorEl] = useState(null);
+
+  const open = Boolean(anchorEl);
+
   const handleClick = (event) => {
     setAnchorEl(anchorEl ? null : event.currentTarget);
   };
 
-  const open = Boolean(anchorEl);
-  //const id = open ? 'simple-popper' : undefined;
   return (
     <>
       <Card key={index} fullwidth className={classes.root}>
@@ -128,15 +126,7 @@ function Post({ post, index }) {
         </CardContent>
 
         <CardActions disableSpacing>
-          <IconButton
-            // onClick={(e) => {
-            //   setOpen(true);
-            //   setAnchor(e.target);
-
-            // }}
-            onClick={handleClick}
-            id={post.id}
-          >
+          <IconButton onClick={handleClick}>
             <ThumbUpAltIcon />
           </IconButton>
 
@@ -198,9 +188,9 @@ function Post({ post, index }) {
         </CardActions>
       </Card>
 
-      {post.comments.map((post, index) => (
+      {/* {post.comments.map((post, index) => (
         <Post post={post} key={post.id} index={index} />
-      ))}
+      ))} */}
     </>
   );
 }

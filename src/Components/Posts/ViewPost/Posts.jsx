@@ -8,7 +8,7 @@ import Post from './Post';
 
 function Posts() {
   const classes = useStyles();
-  //const user = useSelector((state) => state.users);
+  const user = useSelector((state) => state.users);
   const posts = useSelector((state) => state.posts);
 
   return (
