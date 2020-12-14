@@ -62,9 +62,9 @@ export default function SimpleTabs() {
     <div className={classes.root}>
       <AppBar position='static'>
         <Tabs value={value} onChange={handleChange}>
-          <Tab label='Info' {...a11yProps(0)} />
-          <Tab label='Posts' {...a11yProps(1)} />
-          <Tab label='Friends' {...a11yProps(2)} />
+          <Tab label='MyInfos' {...a11yProps(0)} />
+          <Tab label='MyPosts' {...a11yProps(1)} />
+          <Tab label='MyFriends' {...a11yProps(2)} />
         </Tabs>
       </AppBar>
       <TabPanel value={value} index={0}>

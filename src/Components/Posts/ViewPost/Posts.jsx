@@ -8,14 +8,8 @@ import Post from './Post';
 
 function Posts() {
   const classes = useStyles();
-
+  //const user = useSelector((state) => state.users);
   const posts = useSelector((state) => state.posts);
-
-  // const [showEdit, setShowEdit] = useState(false);
-  // const [showComment, setShowComment] = useState(false);
-
-  // const [selected, setSelected] = useState(-1);
-  // const dispatch = useDispatch();
 
   return (
     <div>

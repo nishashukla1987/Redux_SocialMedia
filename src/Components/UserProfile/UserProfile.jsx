@@ -8,6 +8,8 @@ import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 import UserInfo from './UserInfo';
 import UserPosts from './userPosts';
+import Friends from './UserFriends';
+import UserFriends from './UserFriends';
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -60,13 +62,9 @@ export default function SimpleTabs() {
   return (
     <div className={classes.root}>
       <AppBar position='static'>
-        <Tabs
-          value={value}
-          onChange={handleChange}
-          aria-label='simple tabs example'
-        >
+        <Tabs value={value} onChange={handleChange}>
           <Tab label='Info' {...a11yProps(0)} />
-          <Tab label='Post' {...a11yProps(1)} />
+          <Tab label='Posts' {...a11yProps(1)} />
           <Tab label='Friends' {...a11yProps(2)} />
         </Tabs>
       </AppBar>
@@ -77,7 +75,7 @@ export default function SimpleTabs() {
         <UserPosts />
       </TabPanel>
       <TabPanel value={value} index={2}>
-        Item Three
+        <UserFriends />
       </TabPanel>
     </div>
   );

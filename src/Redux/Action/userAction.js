@@ -1,6 +1,7 @@
 import axios from 'axios';
 
 const url = 'https://sz.hktr.de/api';
+//const url = 'http://danyloveselyi.me:3000/api';
 
 export const searchUser = (match, type = 'User', field = 'name') => async (
   dispatch
@@ -52,17 +53,47 @@ export const getUserPosts = (userId) => async (dispatch) => {
 
 export const addFriend = (userId) => async (dispatch) => {
   try {
-    const response = await axios.post(`${url}/friends/approve/${userId}`);
+    const response = await axios.post(`${url}/friends/approve/`, {
+      id: userId,
+    });
     console.log(response.data);
     dispatch({
       type: 'ADDFRIEND',
-      userId,
-      data: response.data,
+
+      userData: response.data,
     });
     await getUser(userId)(dispatch);
   } catch (error) {
     console.log(error);
   }
+};
+
+export const unFriend = (userId) => async (dispatch) => {
+  try {
+    const response = await axios.post(`${url}/friends/reject/`, {
+      id: userId,
+    });
+    console.log(response.data);
+    dispatch({
+      type: 'UNFRIEND',
+
+      userData: response.data,
+    });
+    await getUser(userId)(dispatch);
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const getUserFriends = (arrayOfUserIds) => (dispatch) => {
+  arrayOfUserIds.map((id) =>
+    axios.get(`${url}/user/${id}`).then((response) =>
+      dispatch({
+        type: 'GETUSER_FRIENDS',
+        user: response.data,
+      })
+    )
+  );
 };
 
 export const changeAvatar = (avatar) => async (dispatch) => {

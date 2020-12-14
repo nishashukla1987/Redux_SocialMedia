@@ -1,8 +1,12 @@
 import React, { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { getUser, getUserPosts } from '../../Redux/Action/userAction';
-import { AppBar, Tab, Tabs } from '@material-ui/core';
+import {
+  addFriend,
+  getUser,
+  getUserPosts,
+} from '../../Redux/Action/userAction';
+import { AppBar, Avatar, Tab, Tabs } from '@material-ui/core';
 import { TabPanel } from '@material-ui/lab';
 //import Posts from '../Posts/ViewPost/Posts';
 
@@ -21,7 +25,7 @@ function UserInfo() {
 
   return (
     <>
-      <img
+      <Avatar
         src={user.userData.avatar}
         style={{
           width: '150px',
@@ -31,6 +35,9 @@ function UserInfo() {
       />
       <h1>{user.userData.name}</h1>
       <h2>{user.userData.email}</h2>
+      <button onClick={() => dispatch(addFriend(user.userData.id))}>
+        Add User
+      </button>
     </>
   );
 }

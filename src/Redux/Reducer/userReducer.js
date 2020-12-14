@@ -2,6 +2,7 @@ const defaultState = {
   search: {},
   userData: [],
   userPosts: [],
+  users: {},
 };
 
 const userReducer = (state = defaultState, action) => {
@@ -20,10 +21,19 @@ const userReducer = (state = defaultState, action) => {
     case 'GETUSER_POST':
       return { ...state, userPosts: action.userPosts };
 
-    case 'ADDFRIEND':
-      return { ...state };
+    case 'GETUSER_FRIENDS':
+      return {
+        ...state,
+        users: { ...state.users, [action.user.id]: action.user },
+      };
 
     case 'AVATAR':
+      return { ...state, userData: action.userData };
+
+    case 'ADDFRIEND':
+      return { ...state, userData: action.userData };
+
+    case 'UNFRIEND':
       return { ...state, userData: action.userData };
 
     default:
