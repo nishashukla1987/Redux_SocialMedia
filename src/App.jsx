@@ -6,15 +6,16 @@ import Posts from './Components/Posts/ViewPost/Posts';
 import { getPost } from './Redux/Action/postAction';
 import Navigation from './Components/Container/Navigation/Navigation';
 import CheckAuth from './Components/Auth/AuthInfo/CheckAuth';
-import IfAuth from './ifAuth';
-import UserProfile from './Components/Profile/UserProfile';
-import MyProfile from './Components/Profile/MyProfile';
+import IfAuth from './Components/Auth/ifAuth';
+import UserProfile from './Components/UserProfile/UserProfile';
+
 import StatusSnackbar from './Components/Auth/AuthInfo/SnackbarStatus';
+import MyProfileView from './MyProfile/MyProfileView';
 
 function App() {
   const dispatch = useDispatch();
-
   const state = useSelector((state) => state.auth.refreshToken);
+
   useEffect(() => {
     dispatch(getPost());
   }, [dispatch]);
@@ -30,7 +31,7 @@ function App() {
           <Route path='/post/add' component={AddPost} />
           <Route exact path='/nisa' component={Posts} />
           <Route path='/user/:id' component={UserProfile} />
-          <Route path='/profile/:id' component={MyProfile} />
+          <Route path='/profile/:id' component={MyProfileView} />
         </Switch>
       </IfAuth>
     </div>

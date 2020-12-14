@@ -46,7 +46,7 @@ import {
 
 function Post({ post, index }) {
   const classes = useStyles();
-
+  const user = useSelector((state) => state.users);
   const author = useSelector((state) => state.auth.userData.user);
 
   const [showEdit, setShowEdit] = useState(false);
@@ -77,9 +77,14 @@ function Post({ post, index }) {
     },
   });
 
-  const [open, setOpen] = useState(false);
-  const [anchor, setAnchor] = useState(null);
+  //const [open, setOpen] = useState(false);
+  const [anchorEl, setAnchorEl] = React.useState(null);
+  const handleClick = (event) => {
+    setAnchorEl(anchorEl ? null : event.currentTarget);
+  };
 
+  const open = Boolean(anchorEl);
+  //const id = open ? 'simple-popper' : undefined;
   return (
     <>
       <Card key={index} fullwidth className={classes.root}>
@@ -104,7 +109,7 @@ function Post({ post, index }) {
 
         <CardContent>
           <FormControl>
-            <Typography variant='body2' color='textSecondary' component='p'>
+            <Typography variant='body2' color='inherit' component='p'>
               {post.images.length ? (
                 <img
                   src={post.images || null}
@@ -117,22 +122,25 @@ function Post({ post, index }) {
                 />
               ) : null}
 
-              {post.message}
+              <h4>{post.message}</h4>
             </Typography>
           </FormControl>
         </CardContent>
 
         <CardActions disableSpacing>
           <IconButton
-            onClick={(e) => {
-              setOpen(true);
-              setAnchor(e.target);
-            }}
+            // onClick={(e) => {
+            //   setOpen(true);
+            //   setAnchor(e.target);
+
+            // }}
+            onClick={handleClick}
+            id={post.id}
           >
             <ThumbUpAltIcon />
           </IconButton>
 
-          <Popper id={post.id} open={open} anchorEl={anchor}>
+          <Popper id={post.id} open={open} anchorEl={anchorEl}>
             <div className={classes.paper}>
               {Object.keys(IconForReaction).map((reaction) => (
                 <button
