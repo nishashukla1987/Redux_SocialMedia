@@ -64,6 +64,19 @@ export const getUserPosts = (userId) => async (dispatch) => {
   }
 };
 
+export const getMyPosts = () => async (dispatch) => {
+  try {
+    const response = await axios.get(`${url}/post/mine`);
+    console.log(response.data);
+    dispatch({
+      type: 'GETUSER_POST',
+      userPosts: response.data,
+    });
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 export const addFriend = (userId) => async (dispatch) => {
   try {
     const response = await axios.post(`${url}/friends/approve/`, {

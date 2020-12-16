@@ -16,16 +16,18 @@ const userReducer = (state = defaultState, action) => {
       return { ...state, search: { model, field, match } };
 
     case 'GET_USER':
-      return {
-        ...state,
-        userData: action.userData,
-      };
+      return { ...state, userData: action.userData };
+    // return {
+    //   ...state,
+    //   users: { ...state.users, [action.userData.id]: action.userData },
+    // };
 
     case 'LOAD_USER':
       return {
         ...state,
         users: { ...state.users, [action.userData.id]: action.userData },
       };
+    // return { ...state, userData: action.userData };
 
     case 'GETUSER_POST':
       return { ...state, userPosts: action.userPosts };

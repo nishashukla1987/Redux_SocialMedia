@@ -15,6 +15,7 @@ import {
 
 import { useStyles } from '../Posts/ViewPost/styles';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
+import Post from '../Posts/ViewPost/Post';
 
 function UserPosts() {
   const classes = useStyles();
@@ -34,40 +35,41 @@ function UserPosts() {
 
   return (
     <>
-      {user.userPosts.map((post) => (
-        <div>
-          <Card fullwidth className={classes.root}>
-            <CardHeader
-              avatar={
-                <Avatar
-                  className={classes.avatar}
-                  src={user.userData.avatar}
-                ></Avatar>
-              }
-              action={
-                <IconButton aria-label='settings'>
-                  <MoreVertIcon />
-                </IconButton>
-              }
-              title={user.userData.name}
-              subheader={
-                'Posted  ' +
-                moment(post.createdAt).fromNow() +
-                (post.createdAt != post.createdAt
-                  ? ' (edited ' + moment(post.updatedAt).fromNow() + ')'
-                  : '')
-              }
-            />
+      {user.userPosts.map((post, index) => (
+        <Post post={post} key={post.id} index={index} />
+        // <div>
+        //   <Card fullwidth className={classes.root}>
+        //     <CardHeader
+        //       avatar={
+        //         <Avatar
+        //           className={classes.avatar}
+        //           src={user.userData.avatar}
+        //         ></Avatar>
+        //       }
+        //       action={
+        //         <IconButton aria-label='settings'>
+        //           <MoreVertIcon />
+        //         </IconButton>
+        //       }
+        //       title={user.userData.name}
+        //       subheader={
+        //         'Posted  ' +
+        //         moment(post.createdAt).fromNow() +
+        //         (post.createdAt != post.createdAt
+        //           ? ' (edited ' + moment(post.updatedAt).fromNow() + ')'
+        //           : '')
+        //       }
+        //     />
 
-            <CardContent>
-              <FormControl>
-                <Typography variant='body2' color='inherit' component='p'>
-                  <h3>{post.message}</h3>
-                </Typography>
-              </FormControl>
-            </CardContent>
-          </Card>
-        </div>
+        //     <CardContent>
+        //       <FormControl>
+        //         <Typography variant='body2' color='inherit' component='p'>
+        //           <h3>{post.message}</h3>
+        //         </Typography>
+        //       </FormControl>
+        //     </CardContent>
+        //   </Card>
+        // </div>
       ))}
     </>
   );
