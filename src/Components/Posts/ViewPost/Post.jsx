@@ -159,7 +159,7 @@ function Post({ post, index }) {
         <Post post={post} key={post.id} index={index} />
       ))} */}
 
-      {post.comments.map((post) => post)}
+      {/* {post.comments.map((post) => post)} */}
     </>
   );
 }

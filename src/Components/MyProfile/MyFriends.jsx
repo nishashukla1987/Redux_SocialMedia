@@ -2,11 +2,7 @@ import { Avatar, IconButton } from '@material-ui/core';
 import React, { useEffect } from 'react';
 
 import { useDispatch, useSelector } from 'react-redux';
-import {
-  addFriend,
-  getUserFriends,
-  unFriend,
-} from '../../Redux/Action/userAction';
+import { getUserFriends, unFriend } from '../../Redux/Action/userAction';
 import CancelIcon from '@material-ui/icons/Cancel';
 import CheckCircleIcon from '@material-ui/icons/CheckCircle';
 import MyFriendsRequests from './MyFriendsRequests';
@@ -14,12 +10,13 @@ import { useStyles } from './styles';
 import MyFrndReqSent from './MyFrndReqSent';
 
 function MyFriends() {
-  const dispatch = useDispatch();
   const classes = useStyles();
+  const dispatch = useDispatch();
 
   const userData = useSelector((state) => state.users.userData);
 
   const users = useSelector((state) => state.users.users);
+
   useEffect(() => dispatch(getUserFriends(userData.friends)), []);
 
   return (
