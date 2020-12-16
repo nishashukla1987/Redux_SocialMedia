@@ -19,4 +19,7 @@ export const useStyles = makeStyles((theme) => ({
   myprofile: {
     marginLeft: '30px',
   },
+  addfriendIcon: {
+    fontSize: '12px',
+  },
 }));

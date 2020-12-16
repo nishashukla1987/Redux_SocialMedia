@@ -2,8 +2,9 @@ import { makeStyles } from '@material-ui/core';
 
 export const useStyles = makeStyles((theme) => ({
   root: {
-    maxWidth: 600,
+    maxWidth: 900,
     marginBottom: '15px',
+    marginLeft: '100px',
     '& .MuiCardHeader-title.MuiTypography-body2': {
       fontWeight: 'bold',
     },

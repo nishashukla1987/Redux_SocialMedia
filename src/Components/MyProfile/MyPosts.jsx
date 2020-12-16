@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
 import moment from 'moment';
 import { useDispatch, useSelector } from 'react-redux';
-import { getUser, getUserPosts } from '../Redux/Action/userAction';
+import { getUser, getUserPosts } from '../../Redux/Action/userAction';
 import {
   Avatar,
   Card,
@@ -13,7 +13,7 @@ import {
   Typography,
 } from '@material-ui/core';
 
-import { useStyles } from '../Components/Posts/ViewPost/styles';
+import { useStyles } from './styles';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 
 function MyPosts() {

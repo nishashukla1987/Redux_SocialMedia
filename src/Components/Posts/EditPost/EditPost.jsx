@@ -49,7 +49,7 @@ export default function Editpost({ post, setSelected }) {
               setSelected(-1);
             }}
           >
-            SavePost
+            Save
           </Button>
         </CardActions>
       </form>

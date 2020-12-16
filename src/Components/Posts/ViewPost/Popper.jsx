@@ -1,26 +1,29 @@
-import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
+import React, { useState } from 'react';
+//import { makeStyles } from '@material-ui/core/styles';
+import { useStyles } from './styles';
 import Popper from '@material-ui/core/Popper';
 import { deleteReaction, likePost } from '../../../Redux/Action/postAction';
-import { useStyles } from './styles';
+
 import { IconButton } from '@material-ui/core';
 import ThumbUpAltIcon from '@material-ui/icons/ThumbUpAlt';
+import { useDispatch } from 'react-redux';
+import {
+  AiFillLike,
+  AiFillDislike,
+  AiFillHeart,
+  AiFillFrown,
+} from 'react-icons/ai';
 
-const useStyles = makeStyles((theme) => ({
-  paper: {
-    border: '1px solid',
-    padding: theme.spacing(1),
-    backgroundColor: theme.palette.background.paper,
-  },
-}));
+import {
+  FaRegGrinSquintTears,
+  FaAngry,
+  FaRegLaughSquint,
+} from 'react-icons/fa';
 
-export default function Popper({ post, index }) {
+export default function ({ post, anchorEl, open }) {
   const classes = useStyles();
-
-  const classes = useStyles();
-  const user = useSelector((state) => state.users);
-  const author = useSelector((state) => state.auth.userData.user);
-  const [anchorEl, setAnchorEl] = React.useState(null);
+  //const user = useSelector((state) => state.users);
+  //const author = useSelector((state) => state.auth.userData.user);
 
   const dispatch = useDispatch();
 
@@ -34,8 +37,6 @@ export default function Popper({ post, index }) {
     Lol: <FaRegLaughSquint />,
   };
 
-  //const [open, setOpen] = useState(false);
-
   const [state, setState] = useState({
     reaction: {
       Like: post.yourReactions.Like || false,
@@ -48,21 +49,8 @@ export default function Popper({ post, index }) {
     },
   });
 
-  const [anchorEl, setAnchorEl] = useState(null);
-
-  const handleClick = (event) => {
-    setAnchorEl(anchorEl ? null : event.currentTarget);
-  };
-
-  const open = Boolean(anchorEl);
-  //const id = open ? 'simple-popper' : undefined;
-
   return (
     <>
-      {/* <IconButton onClick={handleClick}>
-        <ThumbUpAltIcon />
-      </IconButton> */}
-
       <Popper id={post.id} open={open} anchorEl={anchorEl}>
         <div className={classes.paper}>
           {Object.keys(IconForReaction).map((reaction) => (

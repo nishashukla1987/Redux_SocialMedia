@@ -1,9 +1,14 @@
-import { Avatar } from '@material-ui/core';
+import { Avatar, IconButton } from '@material-ui/core';
 import React, { useEffect } from 'react';
 
 import { useDispatch, useSelector } from 'react-redux';
-import { getUserFriends, unFriend } from '../../Redux/Action/userAction';
+import {
+  addFriend,
+  getUserFriends,
+  unFriend,
+} from '../../Redux/Action/userAction';
 import { useStyles } from './styles';
+import CheckCircleIcon from '@material-ui/icons/CheckCircle';
 
 function UserFriends() {
   const dispatch = useDispatch();
@@ -25,6 +30,13 @@ function UserFriends() {
               <Avatar className={classes.avatar} src={user.avatar}></Avatar>
 
               {user.name}
+              <IconButton
+                className={classes.addfriendIcon}
+                onClick={() => dispatch(addFriend(id))}
+              >
+                {/* <CheckCircleIcon /> */}
+                AddFriend
+              </IconButton>
             </li>
           );
         })}

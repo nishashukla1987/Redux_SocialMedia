@@ -2,6 +2,9 @@ import { makeStyles } from '@material-ui/core/styles';
 
 export const useStyles = makeStyles((theme) => ({
   root: {
+    maxWidth: 900,
+    marginBottom: '15px',
+    marginLeft: '100px',
     padding: theme.spacing(1),
     margin: theme.spacing(1),
     '&> div': {
@@ -18,5 +21,12 @@ export const useStyles = makeStyles((theme) => ({
 
   myprofile: {
     marginLeft: '30px',
+  },
+
+  unFriendicon: {
+    fontSize: '13px',
+  },
+  pendindReq: {
+    fontSize: '13px',
   },
 }));
