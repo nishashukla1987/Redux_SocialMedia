@@ -10,7 +10,7 @@ import IfAuth from './Components/Auth/ifAuth';
 import UserProfile from './Components/UserProfile/UserProfile';
 
 import StatusSnackbar from './Components/Auth/AuthInfo/SnackbarStatus';
-import MyProfileView from './MyProfile/MyProfileView';
+import MyProfileView from './Components/MyProfile/MyProfileView';
 
 function App() {
   const dispatch = useDispatch();

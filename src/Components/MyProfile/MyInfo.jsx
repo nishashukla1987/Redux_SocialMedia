@@ -6,7 +6,7 @@ import {
   changeAvatar,
   getUser,
   getUserPosts,
-} from '../Redux/Action/userAction';
+} from '../../Redux/Action/userAction';
 import { AppBar, Avatar, Tab, Tabs } from '@material-ui/core';
 import { TabPanel } from '@material-ui/lab';
 import { DropzoneDialog } from 'material-ui-dropzone';

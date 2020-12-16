@@ -38,6 +38,19 @@ export const getUser = (userId) => async (dispatch) => {
   }
 };
 
+export const loadUser = (userId) => async (dispatch) => {
+  try {
+    const response = await axios.get(`${url}/user/${userId}`);
+    console.log(response.data);
+    dispatch({
+      type: 'LOAD_USER',
+      userData: response.data,
+    });
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 export const getUserPosts = (userId) => async (dispatch) => {
   try {
     const response = await axios.get(`${url}/user/posts/${userId}`);

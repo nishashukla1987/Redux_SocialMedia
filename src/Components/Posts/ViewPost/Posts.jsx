@@ -1,4 +1,4 @@
-import { Container } from '@material-ui/core';
+import { Container, Popper } from '@material-ui/core';
 
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -8,7 +8,7 @@ import Post from './Post';
 
 function Posts() {
   const classes = useStyles();
-  //const user = useSelector((state) => state.users);
+  const user = useSelector((state) => state.users);
   const posts = useSelector((state) => state.posts);
 
   return (

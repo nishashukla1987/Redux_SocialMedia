@@ -1,18 +1,15 @@
+import React, { useEffect, useState } from 'react';
 import {
   Avatar,
   Card,
   CardActions,
   CardContent,
   CardHeader,
-  Container,
   FormControl,
-  Hidden,
   IconButton,
-  Popper,
   Typography,
 } from '@material-ui/core';
 import moment from 'moment';
-import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import ThumbUpAltIcon from '@material-ui/icons/ThumbUpAlt';
 import ShareIcon from '@material-ui/icons/Share';
@@ -20,8 +17,9 @@ import MoreVertIcon from '@material-ui/icons/MoreVert';
 import DeleteIcon from '@material-ui/icons/Delete';
 import EditIcon from '@material-ui/icons/Edit';
 import AddCommentIcon from '@material-ui/icons/AddComment';
-//import { FaAngry, AiOutlineFrown } from '@react-icons/all-files/fa/FaBeer';
-import { FaFrown } from 'react-icons/fa';
+
+import Popper from './Popper';
+
 import {
   AiFillLike,
   AiFillDislike,
@@ -31,7 +29,6 @@ import {
 import {
   likePost,
   removePost,
-  commentPost,
   deleteReaction,
 } from '../../../Redux/Action/postAction';
 import Comment from '../Comment/Comment';
@@ -43,11 +40,15 @@ import {
   FaAngry,
   FaRegLaughSquint,
 } from 'react-icons/fa';
+import { getUser } from '../../../Redux/Action/userAction';
 
 function Post({ post, index }) {
   const classes = useStyles();
   const user = useSelector((state) => state.users);
-  const author = useSelector((state) => state.auth.userData.user);
+
+  const author = useSelector((state) => state.users.users[post.author]) || {
+    name: post.author,
+  };
 
   const [showEdit, setShowEdit] = useState(false);
   const [showComment, setShowComment] = useState(false);
@@ -55,36 +56,16 @@ function Post({ post, index }) {
   const [selected, setSelected] = useState(-1);
   const dispatch = useDispatch();
 
-  const IconForReaction = {
-    Like: <AiFillLike />,
-    Hate: <AiFillDislike />,
-    Love: <AiFillHeart />,
-    Angry: <FaAngry />,
-    Frown: <AiFillFrown />,
-    Rofl: <FaRegGrinSquintTears />,
-    Lol: <FaRegLaughSquint />,
-  };
+  useEffect(() => dispatch(getUser(post.author)), []);
 
-  const [state, setState] = useState({
-    reaction: {
-      Like: post.yourReactions.Like || false,
-      Hate: post.yourReactions.Hate || false,
-      Frown: post.yourReactions.Frown || false,
-      Angry: post.yourReactions.Angry || false,
-      Lol: post.yourReactions.LOl || false,
-      Love: post.yourReactions.Love || false,
-      Rofl: post.yourReactions.Rolf || false,
-    },
-  });
+  const [anchorEl, setAnchorEl] = useState(null);
 
-  //const [open, setOpen] = useState(false);
-  const [anchorEl, setAnchorEl] = React.useState(null);
+  const open = Boolean(anchorEl);
+
   const handleClick = (event) => {
     setAnchorEl(anchorEl ? null : event.currentTarget);
   };
 
-  const open = Boolean(anchorEl);
-  //const id = open ? 'simple-popper' : undefined;
   return (
     <>
       <Card key={index} fullwidth className={classes.root}>
@@ -97,7 +78,7 @@ function Post({ post, index }) {
               <MoreVertIcon />
             </IconButton>
           }
-          title={post.author.name}
+          title={author.name}
           subheader={
             'Posted  ' +
             moment(post.createdAt).fromNow() +
@@ -128,35 +109,11 @@ function Post({ post, index }) {
         </CardContent>
 
         <CardActions disableSpacing>
-          <IconButton
-            // onClick={(e) => {
-            //   setOpen(true);
-            //   setAnchor(e.target);
-
-            // }}
-            onClick={handleClick}
-            id={post.id}
-          >
+          <IconButton onClick={handleClick}>
             <ThumbUpAltIcon />
           </IconButton>
 
-          <Popper id={post.id} open={open} anchorEl={anchorEl}>
-            <div className={classes.paper}>
-              {Object.keys(IconForReaction).map((reaction) => (
-                <button
-                  className={post.yourReactions[reaction] ? classes.like : ''}
-                  key={reaction}
-                  onClick={(e) => {
-                    post.yourReactions[reaction]
-                      ? dispatch(deleteReaction(post.id, reaction))
-                      : dispatch(likePost(post.id, reaction));
-                  }}
-                >
-                  {IconForReaction[reaction]}
-                </button>
-              ))}
-            </div>
-          </Popper>
+          <Popper post={post} id={post.id} open={open} anchorEl={anchorEl} />
 
           <IconButton aria-label='share'>
             <ShareIcon />
@@ -198,9 +155,11 @@ function Post({ post, index }) {
         </CardActions>
       </Card>
 
-      {post.comments.map((post, index) => (
+      {/* {post.comments.map((post, index) => (
         <Post post={post} key={post.id} index={index} />
-      ))}
+      ))} */}
+
+      {post.comments.map((post) => post)}
     </>
   );
 }
