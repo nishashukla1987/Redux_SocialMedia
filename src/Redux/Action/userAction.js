@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios from '../../Axios';
 
 const url = 'https://sz.hktr.de/api';
 //const url = 'http://danyloveselyi.me:3000/api';
@@ -25,10 +25,12 @@ export const searchUser = (match, type = 'User', field = 'name') => async (
   }
 };
 
+let count = 0;
 export const getUser = (userId) => async (dispatch) => {
+  //return;
   try {
     const response = await axios.get(`${url}/user/${userId}`);
-    console.log(response.data);
+    console.log(count++);
     dispatch({
       type: 'GET_USER',
       userData: response.data,
@@ -64,6 +66,19 @@ export const getUserPosts = (userId) => async (dispatch) => {
   }
 };
 
+export const getUserPostsOnly = (userId) => async (dispatch) => {
+  try {
+    const response = await axios.get(`${url}/post/from/${userId}`);
+    console.log(response.data);
+    dispatch({
+      type: 'GETUSER_POST',
+      userPosts: response.data,
+    });
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 export const getMyPosts = () => async (dispatch) => {
   try {
     const response = await axios.get(`${url}/post/mine`);
@@ -85,7 +100,6 @@ export const addFriend = (userId) => async (dispatch) => {
     console.log(response.data);
     dispatch({
       type: 'ADDFRIEND',
-
       userData: response.data,
     });
     await getUser(userId)(dispatch);

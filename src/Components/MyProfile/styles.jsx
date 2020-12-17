@@ -29,4 +29,7 @@ export const useStyles = makeStyles((theme) => ({
   pendindReq: {
     fontSize: '13px',
   },
+  MuiAppBar: {
+    backgroundColor: 'red',
+  },
 }));
