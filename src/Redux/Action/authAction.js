@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios from '../../Axios';
 
 const url = 'https://sz.hktr.de/api';
 //const url = 'http://danyloveselyi.me:3000/api';

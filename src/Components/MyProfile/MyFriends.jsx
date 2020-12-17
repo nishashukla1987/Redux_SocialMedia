@@ -7,7 +7,6 @@ import CancelIcon from '@material-ui/icons/Cancel';
 import CheckCircleIcon from '@material-ui/icons/CheckCircle';
 import MyFriendsRequests from './MyFriendsRequests';
 import { useStyles } from './styles';
-import MyFrndReqSent from './MyFrndReqSent';
 
 function MyFriends() {
   const classes = useStyles();
@@ -40,10 +39,10 @@ function MyFriends() {
             </li>
           );
         })}
-
+        {/* 
         <MyFriendsRequests />
 
-        <MyFrndReqSent />
+        <MyFrndReqSent /> */}
       </ul>
     </>
   );

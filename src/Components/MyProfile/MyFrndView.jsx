@@ -6,10 +6,10 @@ import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
-import MyInfo from './MyInfo';
-import MyPosts from './MyPosts';
-//import MyFriends from './MyFriends';
-import MyFrndView from './MyFrndView';
+
+import MyFriends from './MyFriends';
+import MyFriendsRequests from './MyFriendsRequests';
+import MyFrndReqSent from './MyFrndReqSent';
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -47,11 +47,16 @@ function a11yProps(index) {
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
+
     backgroundColor: theme.palette.background.paper,
+  },
+  tabs: {
+    backgroundColor: 'lightGrey',
+    color: 'black',
   },
 }));
 
-export default function MyProfieView() {
+export default function SimpleTabs() {
   const classes = useStyles();
   const [value, setValue] = React.useState(0);
 
@@ -62,20 +67,20 @@ export default function MyProfieView() {
   return (
     <div className={classes.root}>
       <AppBar position='static'>
-        <Tabs value={value} onChange={handleChange}>
-          <Tab label='MyInfos' {...a11yProps(0)} />
-          <Tab label='MyPosts' {...a11yProps(1)} />
-          <Tab label='MyFriends' {...a11yProps(2)} />
+        <Tabs className={classes.tabs} value={value} onChange={handleChange}>
+          <Tab label='Friends' {...a11yProps(0)} />
+          <Tab label='FriendRequests' {...a11yProps(1)} />
+          <Tab label='FriendRequestsSent' {...a11yProps(2)} />
         </Tabs>
       </AppBar>
       <TabPanel value={value} index={0}>
-        <MyInfo />
+        <MyFriends />
       </TabPanel>
       <TabPanel value={value} index={1}>
-        <MyPosts />
+        <MyFriendsRequests />
       </TabPanel>
       <TabPanel value={value} index={2}>
-        <MyFrndView />
+        <MyFrndReqSent />
       </TabPanel>
     </div>
   );

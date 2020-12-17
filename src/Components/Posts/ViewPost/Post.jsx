@@ -20,31 +20,16 @@ import AddCommentIcon from '@material-ui/icons/AddComment';
 
 import Popper from './Popper';
 
-import {
-  AiFillLike,
-  AiFillDislike,
-  AiFillHeart,
-  AiFillFrown,
-} from 'react-icons/ai';
-import {
-  likePost,
-  removePost,
-  deleteReaction,
-} from '../../../Redux/Action/postAction';
+import { removePost } from '../../../Redux/Action/postAction';
 import Comment from '../Comment/Comment';
 import Editpost from '../EditPost/EditPost';
 import { useStyles } from './styles';
 
-import {
-  FaRegGrinSquintTears,
-  FaAngry,
-  FaRegLaughSquint,
-} from 'react-icons/fa';
-import { getUser } from '../../../Redux/Action/userAction';
+import { getUser, loadUser } from '../../../Redux/Action/userAction';
 
 function Post({ post, index }) {
   const classes = useStyles();
-  const user = useSelector((state) => state.users);
+  //const user = useSelector((state) => state.users);
 
   const author = useSelector((state) => state.users.users[post.author]) || {
     name: post.author,
@@ -52,11 +37,11 @@ function Post({ post, index }) {
 
   const [showEdit, setShowEdit] = useState(false);
   const [showComment, setShowComment] = useState(false);
-  const [images, setImages] = useState({ images: [] });
+  //const [images, setImages] = useState({ images: [] });
   const [selected, setSelected] = useState(-1);
   const dispatch = useDispatch();
 
-  useEffect(() => dispatch(getUser(post.author)), []);
+  useEffect(() => dispatch(loadUser(post.author)), []);
 
   const [anchorEl, setAnchorEl] = useState(null);
 
@@ -159,7 +144,7 @@ function Post({ post, index }) {
         <Post post={post} key={post.id} index={index} />
       ))} */}
 
-      {/* {post.comments.map((post) => post)} */}
+      {post.comments.map((post) => post)}
     </>
   );
 }
