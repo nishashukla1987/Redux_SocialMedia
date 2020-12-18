@@ -4,8 +4,7 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getUserFriends, unFriend } from '../../Redux/Action/userAction';
 import CancelIcon from '@material-ui/icons/Cancel';
-import CheckCircleIcon from '@material-ui/icons/CheckCircle';
-import MyFriendsRequests from './MyFriendsRequests';
+
 import { useStyles } from './styles';
 
 function MyFriends() {
@@ -33,16 +32,11 @@ function MyFriends() {
                 className={classes.unFriendicon}
                 onClick={() => dispatch(unFriend(id))}
               >
-                {/* <CancelIcon /> */}
-                UnFriend
+                <CancelIcon />
               </IconButton>
             </li>
           );
         })}
-        {/* 
-        <MyFriendsRequests />
-
-        <MyFrndReqSent /> */}
       </ul>
     </>
   );

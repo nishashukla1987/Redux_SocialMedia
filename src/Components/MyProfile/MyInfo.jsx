@@ -12,12 +12,9 @@ import { TabPanel } from '@material-ui/lab';
 import { DropzoneDialog } from 'material-ui-dropzone';
 
 function MyInfo() {
-  //const classes = useStyles();
-
   const { id } = useParams();
   const history = useHistory();
 
-  //const authorPost = useSelector((state) => state.users);
   const author = useSelector((state) => state.auth.userData.user);
 
   const dispatch = useDispatch();

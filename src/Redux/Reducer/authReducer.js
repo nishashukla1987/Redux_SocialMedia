@@ -29,7 +29,8 @@ const authReducer = (state = defaultState, action) => {
       };
 
     case 'LOGOUT':
-      delete axios.tokens;
+      //delete axios.tokens;
+      axios.tokens = false;
       return {
         userData: [],
         token: false,

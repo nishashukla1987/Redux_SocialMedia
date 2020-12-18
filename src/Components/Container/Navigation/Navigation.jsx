@@ -192,13 +192,25 @@ export default function Navigation() {
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}>
             <IconButton aria-label='show 4 new mails' color='inherit'>
-              <Badge badgeContent={4} color='secondary'>
-                <MailIcon />
+              <Badge
+                badgeContent={4}
+                color='secondary'
+                className={classes.linkicon}
+              >
+                <Link to='/message'>
+                  <MailIcon />
+                </Link>
               </Badge>
             </IconButton>
             <IconButton aria-label='show 17 new notifications' color='inherit'>
-              <Badge badgeContent={17} color='secondary'>
-                <NotificationsIcon />
+              <Badge
+                badgeContent={17}
+                color='secondary'
+                className={classes.linkicon}
+              >
+                <Link to='/notification'>
+                  <NotificationsIcon />
+                </Link>
               </Badge>
             </IconButton>
             <IconButton
@@ -212,6 +224,7 @@ export default function Navigation() {
               <AccountCircle />
             </IconButton>
           </div>
+
           <div className={classes.sectionMobile}>
             <IconButton
               aria-label='show more'
