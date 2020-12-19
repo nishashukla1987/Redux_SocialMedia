@@ -10,6 +10,7 @@ import { useState } from 'react';
 import { useStyles } from './styles';
 import { useDispatch } from 'react-redux';
 import { commentPost } from '../../../Redux/Action/postAction';
+import { getUserPosts } from '../../../Redux/Action/userAction';
 
 export default function Comment({ post, setSelected }) {
   const classes = useStyles();
@@ -65,6 +66,7 @@ export default function Comment({ post, setSelected }) {
             onClick={(e) => {
               e.preventDefault();
               dispatch(commentPost(commentPostMessage));
+
               setSelected(-1);
             }}
           >

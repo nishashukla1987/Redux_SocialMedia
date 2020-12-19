@@ -25,11 +25,10 @@ import Comment from '../Comment/Comment';
 import Editpost from '../EditPost/EditPost';
 import { useStyles } from './styles';
 
-import { getUser, loadUser } from '../../../Redux/Action/userAction';
+import { loadUser } from '../../../Redux/Action/userAction';
 
 function Post({ post, index }) {
   const classes = useStyles();
-  //const user = useSelector((state) => state.users);
 
   const author = useSelector((state) => state.users.users[post.author]) || {
     name: post.author,
@@ -37,7 +36,7 @@ function Post({ post, index }) {
 
   const [showEdit, setShowEdit] = useState(false);
   const [showComment, setShowComment] = useState(false);
-  //const [images, setImages] = useState({ images: [] });
+
   const [selected, setSelected] = useState(-1);
   const dispatch = useDispatch();
 
@@ -98,6 +97,7 @@ function Post({ post, index }) {
             <ThumbUpAltIcon />
           </IconButton>
 
+          {/* -----popper is included for reactions------ */}
           <Popper post={post} id={post.id} open={open} anchorEl={anchorEl} />
 
           <IconButton aria-label='share'>
@@ -144,7 +144,7 @@ function Post({ post, index }) {
         <Post post={post} key={post.id} index={index} />
       ))} */}
 
-      {post.comments.map((post) => post)}
+      {/* {post.comments.map((post) => post)} */}
     </>
   );
 }

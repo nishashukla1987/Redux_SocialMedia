@@ -1,14 +1,12 @@
 import React from 'react';
 import TextField from '@material-ui/core/TextField';
 import Autocomplete from '@material-ui/lab/Autocomplete';
-//import SearchIcon from '@material-ui/icons/Search';
+
 import { searchUser } from '../../Redux/Action/userAction';
 import { useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { useStyles } from '../Container/Navigation/styles';
 
 export default function Search() {
-  const classes = useStyles();
   const history = useHistory();
   const dispatch = useDispatch();
 
@@ -21,32 +19,34 @@ export default function Search() {
   };
 
   return (
-    <Autocomplete
-      freeSolo
-      style={{
-        width: '250px',
-        height: '40px',
-        backgroundColor: 'white',
-        borderRadius: 5,
-      }}
-      id='free-solo-2-demo'
-      disableClearable
-      options={list || []}
-      getOptionLabel={(o) => o.name}
-      onInputChange={change}
-      onChange={select}
-      debug={true}
-      renderInput={(params) => (
-        <TextField
-          style={{ marginTop: 0 }}
-          {...params}
-          size='small'
-          placeholder='search...'
-          margin='normal'
-          variant='outlined'
-          InputProps={{ ...params.InputProps, type: 'search' }}
-        />
-      )}
-    />
+    <>
+      <Autocomplete
+        freeSolo
+        style={{
+          width: '250px',
+          height: '40px',
+          backgroundColor: 'white',
+          borderRadius: 5,
+        }}
+        id='free-solo-2-demo'
+        disableClearable
+        options={list || []}
+        getOptionLabel={(o) => o.name}
+        onInputChange={change}
+        onChange={select}
+        debug={true}
+        renderInput={(params) => (
+          <TextField
+            style={{ marginTop: 0 }}
+            {...params}
+            size='small'
+            placeholder='search...'
+            margin='normal'
+            variant='outlined'
+            InputProps={{ ...params.InputProps, type: 'search' }}
+          />
+        )}
+      />
+    </>
   );
 }

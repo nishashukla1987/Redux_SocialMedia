@@ -30,10 +30,10 @@ export const addPost = (postData, images) => async (dispatch) => {
   }
 };
 
-export const commentPost = (postData) => async (dispatch) => {
+export const commentPost = (post) => async (dispatch) => {
   try {
-    const response = await axios.post(`${url}/post/${postData.id}`, {
-      message: postData.message,
+    const response = await axios.post(`${url}/post/${post.id}`, {
+      message: post.message,
     });
     console.log(response.data);
     dispatch({

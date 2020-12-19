@@ -16,7 +16,7 @@ export default function StatusSnackbar() {
 
   const dispatch = useDispatch();
 
-  const handleClose = (event, reason) => {
+  const handleClose = (reason) => {
     if (reason === 'clickaway') return;
     dispatch(statusHide());
   };
