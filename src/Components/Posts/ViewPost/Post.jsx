@@ -25,7 +25,7 @@ import Comment from '../Comment/Comment';
 import Editpost from '../EditPost/EditPost';
 import { useStyles } from './styles';
 
-import { getUser, loadUser } from '../../../Redux/Action/userAction';
+import { loadUser } from '../../../Redux/Action/userAction';
 
 function Post({ post, index }) {
   const classes = useStyles();
@@ -144,7 +144,7 @@ function Post({ post, index }) {
         <Post post={post} key={post.id} index={index} />
       ))} */}
 
-      {post.comments.map((post) => post)}
+      {/* {post.comments.map((post) => post)} */}
     </>
   );
 }

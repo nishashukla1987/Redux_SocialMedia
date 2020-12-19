@@ -12,8 +12,6 @@ import { useStyles } from './styles';
 import { useDispatch } from 'react-redux';
 import { login } from '../../../Redux/Action/authAction';
 import { useHistory } from 'react-router-dom';
-import SnackBar from '../AuthInfo/SnackbarStatus';
-import SnackbarStatus from '../AuthInfo/SnackbarStatus';
 
 function Login() {
   const classes = useStyles();
