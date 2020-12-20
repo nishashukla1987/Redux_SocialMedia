@@ -1,18 +1,20 @@
 import React, { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
+import MailIcon from '@material-ui/icons/Mail';
 import {
   addFriend,
   getUser,
   getUserPosts,
 } from '../../Redux/Action/userAction';
-import { AppBar, Avatar, Tab, Tabs } from '@material-ui/core';
-import { TabPanel } from '@material-ui/lab';
-//import Posts from '../Posts/ViewPost/Posts';
+import { Avatar, IconButton, Link } from '@material-ui/core';
+import { sendMessage } from '../../Redux/Action/postAction';
 
 function UserInfo() {
   const { id } = useParams();
   const dispatch = useDispatch();
+
+  const state = useSelector((state) => state.auth);
   console.log(id);
   const user = useSelector((state) => state.users);
 
@@ -35,9 +37,16 @@ function UserInfo() {
       />
       <h1>{user.userData.name}</h1>
       <h2>{user.userData.email}</h2>
+
       <button onClick={() => dispatch(addFriend(user.userData.id))}>
         Add User
       </button>
+
+      <IconButton>
+        <Link to='/message'>
+          <MailIcon />
+        </Link>
+      </IconButton>
     </>
   );
 }

@@ -11,7 +11,7 @@ import UserProfile from './Components/UserProfile/UserProfile';
 
 import StatusSnackbar from './Components/Auth/AuthInfo/SnackbarStatus';
 import MyProfileView from './Components/MyProfile/MyProfileView';
-
+import SendMsg from './Components/Message/SendMsg';
 function App() {
   const dispatch = useDispatch();
   const state = useSelector((state) => state.auth.refreshToken);
@@ -32,6 +32,7 @@ function App() {
           <Route exact path='/nisa' component={Posts} />
           <Route path='/user/:id' component={UserProfile} />
           <Route path='/profile/:id' component={MyProfileView} />
+          <Route path='/message' component={SendMsg} />
         </Switch>
       </IfAuth>
     </div>

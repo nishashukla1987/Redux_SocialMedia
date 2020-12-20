@@ -105,3 +105,19 @@ export const deleteReaction = (postId, reaction) => async (dispatch) => {
     console.log(error);
   }
 };
+
+export const sendMessage = (userId, images) => async (dispatch) => {
+  try {
+    const response = await axios.post(`${url}/message/${userId}`, {
+      message: userId.message,
+    });
+    console.log(response.data);
+    dispatch({
+      type: 'SEND_MESSAGE',
+      postData: response.data,
+      images,
+    });
+  } catch (error) {
+    console.log(error);
+  }
+};

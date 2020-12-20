@@ -52,6 +52,12 @@ const postReducer = (state = defaultState, action) => {
         ),
       };
 
+    case 'SEND_MESSAGE':
+      return {
+        ...state,
+        postData: [action.postData, ...state.postData],
+      };
+
     default:
       return state;
   }
