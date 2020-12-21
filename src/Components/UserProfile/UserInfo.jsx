@@ -41,9 +41,8 @@ function UserInfo() {
       <button onClick={() => dispatch(addFriend(user.userData.id))}>
         Add User
       </button>
-
       <IconButton>
-        <Link to='/message'>
+        <Link href='/message'>
           <MailIcon />
         </Link>
       </IconButton>

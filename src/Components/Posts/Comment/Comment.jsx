@@ -66,7 +66,6 @@ export default function Comment({ post, setSelected }) {
             onClick={(e) => {
               e.preventDefault();
               dispatch(commentPost(commentPostMessage));
-
               setSelected(-1);
             }}
           >
