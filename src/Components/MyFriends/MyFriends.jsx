@@ -42,6 +42,7 @@ function MyFriends() {
                   onClick={() => dispatch(unFriend(id))}
                 >
                   <CancelIcon />
+                  unFriend
                 </IconButton>
               </TableCell>
             </TableRow>
