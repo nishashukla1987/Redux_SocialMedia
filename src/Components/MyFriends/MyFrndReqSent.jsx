@@ -47,6 +47,16 @@ function MyFrndReqSent() {
                   Request Pending...
                 </IconButton>
               </TableCell>
+
+              <TableCell>
+                <IconButton
+                  className={classes.unFriendicon}
+                  onClick={() => dispatch(unFriend(id))}
+                >
+                  <CancelIcon />
+                  cancel
+                </IconButton>
+              </TableCell>
             </TableRow>
           );
         })}

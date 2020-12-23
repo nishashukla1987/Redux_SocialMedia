@@ -45,6 +45,7 @@ export default function Comment({ post, setSelected }) {
 
         <div>
           <TextField
+            className={classes.textfield}
             id='outlined-multiline-static'
             label=' Comment Post '
             multiline

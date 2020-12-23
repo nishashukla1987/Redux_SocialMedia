@@ -59,10 +59,11 @@ export default function AddPost() {
         ) : null}
         <div>
           <TextField
+            className={classes.textfield}
             id='outlined-multiline-static'
             label='Write Post Here'
             multiline
-            rows={4}
+            rows={5}
             value={state.message}
             variant='outlined'
             onChange={(e) =>

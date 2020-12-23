@@ -7,6 +7,7 @@ import {
   CardHeader,
   FormControl,
   IconButton,
+  Link,
   Typography,
 } from '@material-ui/core';
 import moment from 'moment';
@@ -63,13 +64,7 @@ function Post({ post, index }) {
             </IconButton>
           }
           title={author.name}
-          subheader={
-            'Posted  ' +
-            moment(post.createdAt).fromNow() +
-            (post.createdAt != post.createdAt
-              ? ' (edited ' + moment(post.updatedAt).fromNow() + ')'
-              : '')
-          }
+          subheader={'Posted ' + moment(post.createdAt).fromNow()}
         />
 
         <CardContent>

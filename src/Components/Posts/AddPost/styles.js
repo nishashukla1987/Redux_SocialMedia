@@ -17,4 +17,7 @@ export const useStyles = makeStyles((theme) => ({
       textDecoration: 'none',
     },
   },
+  textfield: {
+    width: '800px',
+  },
 }));
