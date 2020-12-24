@@ -9,13 +9,15 @@ import { useState } from 'react';
 import { useStyles } from './styles';
 import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { addPost } from '../../../Redux/Action/postAction';
+//import { addPost } from '../../../Redux/Action/postAction';
 import { DropzoneDialog } from 'material-ui-dropzone';
+import { sendMessage } from '../../Redux/Action/postAction';
 
 export default function AddPost() {
   const classes = useStyles();
 
   const [state, setState] = useState({ message: '', images: [] });
+
   const dispatch = useDispatch();
 
   function handleOpen() {
@@ -44,7 +46,7 @@ export default function AddPost() {
 
   return (
     <Card className={classes.root} variant='outlined'>
-      <CardHeader title='Create Post' />
+      <CardHeader title='Add Your Message' />
       <form noValidate>
         {state.images.length ? (
           <img
@@ -61,7 +63,7 @@ export default function AddPost() {
           <TextField
             className={classes.textfield}
             id='outlined-multiline-static'
-            label='Write Post Here'
+            label='Write message Here'
             multiline
             rows={5}
             value={state.message}
@@ -80,10 +82,10 @@ export default function AddPost() {
             color='primary'
             onClick={(e) => {
               e.preventDefault();
-              dispatch(addPost(state));
+              dispatch(sendMessage(state));
             }}
           >
-            <Link to='/nisa'>Post</Link>
+            <Link to='/message'>Post</Link>
           </Button>
 
           <Button onClick={handleOpen}>Insert Images</Button>

@@ -1,4 +1,10 @@
-import { Avatar, IconButton } from '@material-ui/core';
+import {
+  Avatar,
+  IconButton,
+  Table,
+  TableCell,
+  TableRow,
+} from '@material-ui/core';
 import React, { useEffect } from 'react';
 
 import { useDispatch, useSelector } from 'react-redux';
@@ -20,29 +26,41 @@ function MyFriendsRequests() {
 
   return (
     <>
-      <ul>
+      <Table>
         {userData.friendRequests.map((id) => {
           const user = users[id];
           if (!user) return `${id}`;
           return (
-            <li>
-              <Avatar src={user.avatar}></Avatar>
-              {user.name}
+            <TableRow>
+              <TableCell>
+                <Avatar src={user.avatar}></Avatar>
+              </TableCell>
 
-              <IconButton onClick={() => dispatch(addFriend(id))}>
-                <CheckCircleIcon />
-              </IconButton>
+              <TableCell>{user.name}</TableCell>
 
-              <IconButton
-                className={classes.unFriendicon}
-                onClick={() => dispatch(unFriend(id))}
-              >
-                <CancelIcon />
-              </IconButton>
-            </li>
+              <TableCell>
+                <IconButton
+                  className={classes.unFriendicon}
+                  onClick={() => dispatch(addFriend(id))}
+                >
+                  <CheckCircleIcon />
+                  AddUser
+                </IconButton>
+              </TableCell>
+
+              <TableCell>
+                <IconButton
+                  className={classes.unFriendicon}
+                  onClick={() => dispatch(unFriend(id))}
+                >
+                  <CancelIcon />
+                  Reject User
+                </IconButton>
+              </TableCell>
+            </TableRow>
           );
         })}
-      </ul>
+      </Table>
     </>
   );
 }

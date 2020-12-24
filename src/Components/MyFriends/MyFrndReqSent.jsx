@@ -1,5 +1,11 @@
 import React, { useEffect } from 'react';
-import { Avatar, IconButton } from '@material-ui/core';
+import {
+  Avatar,
+  IconButton,
+  Table,
+  TableCell,
+  TableRow,
+} from '@material-ui/core';
 
 import { useDispatch, useSelector } from 'react-redux';
 import {
@@ -20,26 +26,41 @@ function MyFrndReqSent() {
 
   return (
     <>
-      <ul>
+      <Table>
         {userData.friendRequestsSent.map((id) => {
           const user = users[id];
 
           if (!user) return `${id}`;
           return (
-            <li>
-              <Avatar src={user.avatar}></Avatar>
-              {user.name}
+            <TableRow>
+              <TableCell>
+                <Avatar src={user.avatar}></Avatar>
+              </TableCell>
 
-              <IconButton
-                className={classes.pendindReq}
-                onClick={() => dispatch(addFriend(id))}
-              >
-                pending
-              </IconButton>
-            </li>
+              <TableCell>{user.name}</TableCell>
+
+              <TableCell>
+                <IconButton
+                  className={classes.pendindReq}
+                  onClick={() => dispatch(addFriend(id))}
+                >
+                  Request Pending...
+                </IconButton>
+              </TableCell>
+
+              <TableCell>
+                <IconButton
+                  className={classes.unFriendicon}
+                  onClick={() => dispatch(unFriend(id))}
+                >
+                  <CancelIcon />
+                  cancel
+                </IconButton>
+              </TableCell>
+            </TableRow>
           );
         })}
-      </ul>
+      </Table>
     </>
   );
 }

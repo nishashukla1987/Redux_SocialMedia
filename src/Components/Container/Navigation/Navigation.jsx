@@ -18,7 +18,7 @@ import { Link } from 'react-router-dom';
 import HomeIcon from '@material-ui/icons/Home';
 import GroupIcon from '@material-ui/icons/Group';
 import Logo from '../../Logo/croped.png';
-import { getPost } from '../../../Redux/Action/postAction';
+import { getPost, sendMessage } from '../../../Redux/Action/postAction';
 import { logout, unregister } from '../../../Redux/Action/authAction';
 import Search from '../../Search/Search';
 
@@ -28,6 +28,7 @@ export default function Navigation() {
   const dispatch = useDispatch();
 
   const state = useSelector((state) => state.auth);
+
   useEffect(() => {
     dispatch(getPost());
   }, [dispatch]);
@@ -112,7 +113,11 @@ export default function Navigation() {
           <MenuItem>
             <IconButton aria-label='show 4 new mails' color='inherit'>
               <Badge badgeContent={4} color='secondary'>
-                <MailIcon />
+                <MailIcon
+                  onClick={() => {
+                    dispatch(sendMessage(state.userId, state.message));
+                  }}
+                />
               </Badge>
             </IconButton>
             <p>Messages</p>

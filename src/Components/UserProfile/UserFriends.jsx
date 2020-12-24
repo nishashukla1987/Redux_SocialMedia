@@ -1,4 +1,10 @@
-import { Avatar, IconButton } from '@material-ui/core';
+import {
+  Avatar,
+  IconButton,
+  Table,
+  TableCell,
+  TableRow,
+} from '@material-ui/core';
 import React, { useEffect } from 'react';
 
 import { useDispatch, useSelector } from 'react-redux';
@@ -20,27 +26,32 @@ function UserFriends() {
 
   return (
     <>
-      <ul>
+      <Table>
         {userData.friends.map((id) => {
           const user = users[id];
 
           if (!user) return `${id}`;
           return (
-            <li>
-              <Avatar className={classes.avatar} src={user.avatar}></Avatar>
+            <TableRow>
+              <TableCell>
+                <Avatar className={classes.avatar} src={user.avatar}></Avatar>
+              </TableCell>
 
-              {user.name}
-              <IconButton
-                className={classes.addfriendIcon}
-                onClick={() => dispatch(addFriend(id))}
-              >
-                {/* <CheckCircleIcon /> */}
-                AddFriend
-              </IconButton>
-            </li>
+              <TableCell>{user.name}</TableCell>
+
+              <TableCell>
+                <IconButton
+                  className={classes.addfriendIcon}
+                  onClick={() => dispatch(addFriend(id))}
+                >
+                  <CheckCircleIcon />
+                  AddFriend
+                </IconButton>
+              </TableCell>
+            </TableRow>
           );
         })}
-      </ul>
+      </Table>
     </>
   );
 }

@@ -1,4 +1,10 @@
-import { Avatar, IconButton } from '@material-ui/core';
+import {
+  Avatar,
+  IconButton,
+  Table,
+  TableCell,
+  TableRow,
+} from '@material-ui/core';
 import React, { useEffect } from 'react';
 
 import { useDispatch, useSelector } from 'react-redux';
@@ -19,27 +25,31 @@ function MyFriends() {
 
   return (
     <>
-      <ul>
+      <Table>
         {userData.friends.map((id) => {
           const user = users[id];
           if (!user) return `${id}`;
           return (
-            <li>
-              <Avatar src={user.avatar}></Avatar>
-              {user.name}
+            <TableRow>
+              <TableCell>
+                <Avatar src={user.avatar}></Avatar>
+              </TableCell>
+              <TableCell>{user.name}</TableCell>
 
-              <IconButton
-                className={classes.unFriendicon}
-                onClick={() => dispatch(unFriend(id))}
-              >
-                <CancelIcon />
-              </IconButton>
-            </li>
+              <TableCell>
+                <IconButton
+                  className={classes.unFriendicon}
+                  onClick={() => dispatch(unFriend(id))}
+                >
+                  <CancelIcon />
+                  unFriend
+                </IconButton>
+              </TableCell>
+            </TableRow>
           );
         })}
-      </ul>
+      </Table>
     </>
   );
 }
-
 export default MyFriends;
