@@ -7,8 +7,8 @@ import {
   getUser,
   getUserPosts,
 } from '../../Redux/Action/userAction';
-import { AppBar, Avatar, Tab, Tabs } from '@material-ui/core';
-import { TabPanel } from '@material-ui/lab';
+import { Avatar, Tab, Tabs } from '@material-ui/core';
+
 import { DropzoneDialog } from 'material-ui-dropzone';
 
 function MyInfo() {

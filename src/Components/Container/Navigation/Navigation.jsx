@@ -113,11 +113,7 @@ export default function Navigation() {
           <MenuItem>
             <IconButton aria-label='show 4 new mails' color='inherit'>
               <Badge badgeContent={4} color='secondary'>
-                <MailIcon
-                  onClick={() => {
-                    dispatch(sendMessage(state.userId, state.message));
-                  }}
-                />
+                <MailIcon />
               </Badge>
             </IconButton>
             <p>Messages</p>

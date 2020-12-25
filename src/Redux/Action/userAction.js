@@ -12,7 +12,7 @@ export const searchUser = (match, type = 'User', field = 'name') => async (
       type,
       field,
     });
-    console.log(response.data);
+
     dispatch({
       type: 'SEARCH_RESULT',
       list: response.data,
@@ -43,7 +43,7 @@ export const getUser = (userId) => async (dispatch) => {
 export const loadUser = (userId) => async (dispatch) => {
   try {
     const response = await axios.get(`${url}/user/${userId}`);
-    console.log(response.data);
+
     dispatch({
       type: 'LOAD_USER',
       userData: response.data,

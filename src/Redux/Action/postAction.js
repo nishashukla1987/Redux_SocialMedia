@@ -6,7 +6,7 @@ const url = 'https://sz.hktr.de/api';
 export const getPost = () => async (dispatch) => {
   try {
     const response = await axios.get(`${url}/post`);
-    console.log(response.data);
+
     dispatch({
       type: 'GET_POST',
       postData: response.data,
@@ -19,7 +19,7 @@ export const getPost = () => async (dispatch) => {
 export const addPost = (postData, images) => async (dispatch) => {
   try {
     const response = await axios.post(`${url}/post`, postData, images);
-    console.log(response.data);
+
     dispatch({
       type: 'ADD_POST',
       postData: response.data,
@@ -107,9 +107,9 @@ export const deleteReaction = (postId, reaction) => async (dispatch) => {
 };
 
 export const sendMessage = (userId, images) => async (dispatch) => {
+  console.log(userId);
   try {
-    const response = await axios.post(`${url}/message`, {
-      id: userId,
+    const response = await axios.post(`${url}/message/${userId}`, {
       message: userId.message,
     });
     console.log(response.data);

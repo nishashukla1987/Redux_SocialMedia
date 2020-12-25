@@ -14,7 +14,6 @@ import {
   unFriend,
 } from '../../Redux/Action/userAction';
 import CancelIcon from '@material-ui/icons/Cancel';
-import CheckCircleIcon from '@material-ui/icons/CheckCircle';
 import { useStyles } from '../MyProfile/styles';
 
 function MyFrndReqSent() {
