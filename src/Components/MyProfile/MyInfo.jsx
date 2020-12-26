@@ -75,8 +75,6 @@ function MyInfo() {
 
       <h1>{author.name}</h1>
       <h2>{author.email}</h2>
-
-      <button onClick={() => dispatch(addFriend(author.id))}>Add Friend</button>
     </>
   );
 }
