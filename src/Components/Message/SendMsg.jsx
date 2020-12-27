@@ -13,7 +13,7 @@ import { useDispatch } from 'react-redux';
 import { DropzoneDialog } from 'material-ui-dropzone';
 import { sendMessage } from '../../Redux/Action/postAction';
 
-export default function AddPost() {
+export default function SendMsg() {
   const classes = useStyles();
 
   const [state, setState] = useState({ message: '', images: [] });
@@ -85,7 +85,7 @@ export default function AddPost() {
               dispatch(sendMessage(state));
             }}
           >
-            <Link to='/message'>Post</Link>
+            <Link to='/setting'>Post</Link>
           </Button>
 
           <Button onClick={handleOpen}>Insert Images</Button>
