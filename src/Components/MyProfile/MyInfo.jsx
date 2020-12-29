@@ -7,7 +7,7 @@ import {
   getUser,
   getUserPosts,
 } from '../../Redux/Action/userAction';
-import { Avatar, Tab, Tabs } from '@material-ui/core';
+import { Avatar, IconButton, Tab, Tabs } from '@material-ui/core';
 
 import { DropzoneDialog } from 'material-ui-dropzone';
 
@@ -62,8 +62,10 @@ function MyInfo() {
           height: '150px',
           padding: '20px',
         }}
-        onClick={handleOpen}
       />
+
+      <button onClick={handleOpen}>Change Avatar</button>
+
       <DropzoneDialog
         open={state.open}
         onSave={handleSave}
