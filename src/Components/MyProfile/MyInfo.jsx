@@ -2,12 +2,11 @@ import React, { useEffect, useState } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import {
-  addFriend,
   changeAvatar,
   getUser,
   getUserPosts,
 } from '../../Redux/Action/userAction';
-import { Avatar, IconButton, Tab, Tabs } from '@material-ui/core';
+import { Avatar } from '@material-ui/core';
 
 import { DropzoneDialog } from 'material-ui-dropzone';
 
