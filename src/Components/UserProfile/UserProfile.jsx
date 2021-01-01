@@ -8,7 +8,7 @@ import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 import UserInfo from './UserInfo';
 import UserPosts from './userPosts';
-import Friends from './UserFriends';
+
 import UserFriends from './UserFriends';
 
 function TabPanel(props) {
