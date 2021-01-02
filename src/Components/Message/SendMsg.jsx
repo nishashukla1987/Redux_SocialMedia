@@ -9,7 +9,7 @@ import { useState } from 'react';
 import { useStyles } from './styles';
 import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-//import { addPost } from '../../../Redux/Action/postAction';
+
 import { DropzoneDialog } from 'material-ui-dropzone';
 import { sendMessage } from '../../Redux/Action/postAction';
 

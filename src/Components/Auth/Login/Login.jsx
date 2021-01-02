@@ -19,7 +19,7 @@ function Login() {
   const history = useHistory();
 
   const [state, setState] = useState({
-    email: 'nishashukla@email.com',
+    email: 'nishadci@email.com',
     password: 'nisha1234',
   });
 
@@ -40,7 +40,7 @@ function Login() {
               margin='normal'
               required
               fullWidth
-              defaultValue='nishashukla@email.com'
+              defaultValue='nishadci@email.com'
               type='email'
               label='Email Address'
               autoFocus
