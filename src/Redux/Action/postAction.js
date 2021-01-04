@@ -118,7 +118,7 @@ export const sendMessage = (userId, images) => async (dispatch) => {
       postData: response.data,
       images,
     });
-    await getPost(userId)(dispatch);
+    //await getPost(userId)(dispatch);
   } catch (error) {
     console.log(error);
   }

@@ -9,6 +9,7 @@ import {
 } from '../../Redux/Action/userAction';
 import { Avatar, IconButton, Link } from '@material-ui/core';
 import { sendMessage } from '../../Redux/Action/postAction';
+import SendMsg from '../Message/SendMsg';
 
 function UserInfo() {
   const { id } = useParams();
@@ -47,6 +48,8 @@ function UserInfo() {
           <MailIcon />
         </Link>
       </IconButton>
+
+      {/* <SendMsg /> */}
     </>
   );
 }
