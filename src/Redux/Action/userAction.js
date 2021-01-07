@@ -27,7 +27,6 @@ export const searchUser = (match, type = 'User', field = 'name') => async (
 
 let count = 0;
 export const getUser = (userId) => async (dispatch) => {
-  //return;
   try {
     const response = await axios.get(`${url}/user/${userId}`);
     console.log(count++);

@@ -8,7 +8,7 @@ import {
 import { useState } from 'react';
 import { useStyles } from './styles';
 import { Link } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { DropzoneDialog } from 'material-ui-dropzone';
 import { sendMessage } from '../../Redux/Action/postAction';
@@ -19,6 +19,7 @@ export default function SendMsg() {
   const [state, setState] = useState({ message: '', images: [] });
 
   const dispatch = useDispatch();
+  //const user = useSelector((state) => state.users);
 
   function handleOpen() {
     setState({ ...state, open: true });
@@ -85,7 +86,12 @@ export default function SendMsg() {
               dispatch(sendMessage(state));
             }}
           >
-            <Link to='/setting'>Post</Link>
+            <Link
+              to='/group'
+              //onClick={() => dispatch(sendMessage(user.userData.id))}
+            >
+              Post
+            </Link>
           </Button>
 
           <Button onClick={handleOpen}>Insert Images</Button>
