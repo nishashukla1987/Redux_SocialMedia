@@ -1,5 +1,6 @@
 const defaultState = {
   postData: [],
+  messages: [],
 };
 
 const postReducer = (state = defaultState, action) => {
@@ -55,7 +56,7 @@ const postReducer = (state = defaultState, action) => {
     case 'SEND_MESSAGE':
       return {
         ...state,
-        postData: [action.postData, ...state.postData],
+        messages: [action.postData, ...state.postData],
       };
 
     default:

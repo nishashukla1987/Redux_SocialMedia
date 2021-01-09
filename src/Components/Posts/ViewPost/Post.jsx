@@ -18,14 +18,11 @@ import MoreVertIcon from '@material-ui/icons/MoreVert';
 import DeleteIcon from '@material-ui/icons/Delete';
 import EditIcon from '@material-ui/icons/Edit';
 import AddCommentIcon from '@material-ui/icons/AddComment';
-
 import Popper from './Popper';
-
 import { removePost } from '../../../Redux/Action/postAction';
 import Comment from '../Comment/Comment';
 import Editpost from '../EditPost/EditPost';
 import { useStyles } from './styles';
-
 import { loadUser } from '../../../Redux/Action/userAction';
 
 function Post({ post, index }) {
@@ -135,11 +132,11 @@ function Post({ post, index }) {
         </CardActions>
       </Card>
 
-      {/* {post.comments.map((post, index) => (
+      {post.comments.map((post, index) => (
         <Post post={post} key={post.id} index={index} />
-      ))} */}
+      ))}
 
-      {post.comments.map((post) => post)}
+      {/* {post.comments.map((post) => post)} */}
     </>
   );
 }

@@ -1,12 +1,9 @@
 import React, { useState } from 'react';
-//import { makeStyles } from '@material-ui/core/styles';
 import { useStyles } from './styles';
 import Popper from '@material-ui/core/Popper';
 import { deleteReaction, likePost } from '../../../Redux/Action/postAction';
-
-import { IconButton } from '@material-ui/core';
-import ThumbUpAltIcon from '@material-ui/icons/ThumbUpAlt';
 import { useDispatch } from 'react-redux';
+
 import {
   AiFillLike,
   AiFillDislike,
@@ -22,8 +19,6 @@ import {
 
 export default function ({ post, anchorEl, open }) {
   const classes = useStyles();
-  //const user = useSelector((state) => state.users);
-  //const author = useSelector((state) => state.auth.userData.user);
 
   const dispatch = useDispatch();
 

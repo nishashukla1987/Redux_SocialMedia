@@ -8,11 +8,7 @@ import {
 import React, { useEffect } from 'react';
 
 import { useDispatch, useSelector } from 'react-redux';
-import {
-  addFriend,
-  getUserFriends,
-  unFriend,
-} from '../../Redux/Action/userAction';
+import { addFriend, getUserFriends } from '../../Redux/Action/userAction';
 import { useStyles } from './styles';
 import CheckCircleIcon from '@material-ui/icons/CheckCircle';
 
