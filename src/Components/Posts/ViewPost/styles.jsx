@@ -18,7 +18,7 @@ export const useStyles = makeStyles((theme) => ({
   },
   rootGrid: {
     display: 'flex',
-    //flexWrap: 'wrap',
+
     flexDirection: 'column',
 
     justifyContent: 'space-around',

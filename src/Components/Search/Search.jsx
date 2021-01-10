@@ -14,6 +14,7 @@ export default function Search() {
 
   const change = (e) => dispatch(searchUser(e.target.value));
   console.log(list);
+
   const select = (e, v, r) => {
     if (r === 'select-option') history.push(`/user/${v.id}`);
   };
