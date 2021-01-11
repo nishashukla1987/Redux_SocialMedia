@@ -1,6 +1,7 @@
 const defaultState = {
   postData: [],
   messages: [],
+  byId: {},
 };
 
 const postReducer = (state = defaultState, action) => {
@@ -57,6 +58,12 @@ const postReducer = (state = defaultState, action) => {
       return {
         ...state,
         messages: [action.postData, ...state.postData],
+      };
+
+    case 'GET_POSTBY_ID':
+      return {
+        ...state,
+        byId: { ...state.byId, [action.id]: action.postData },
       };
 
     default:

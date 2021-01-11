@@ -24,6 +24,7 @@ import Comment from '../Comment/Comment';
 import Editpost from '../EditPost/EditPost';
 import { useStyles } from './styles';
 import { loadUser } from '../../../Redux/Action/userAction';
+import PostRef from './PostRef';
 
 function Post({ post, index }) {
   const classes = useStyles();
@@ -34,6 +35,7 @@ function Post({ post, index }) {
 
   const [showEdit, setShowEdit] = useState(false);
   const [showComment, setShowComment] = useState(false);
+  const [showComments, setShowComments] = useState(false);
 
   const [selected, setSelected] = useState(-1);
   const dispatch = useDispatch();
@@ -47,6 +49,10 @@ function Post({ post, index }) {
   const handleClick = (event) => {
     setAnchorEl(anchorEl ? null : event.currentTarget);
   };
+
+  function commentPopUP() {
+    setShowComments(!showComments);
+  }
 
   return (
     <>
@@ -122,6 +128,8 @@ function Post({ post, index }) {
             <AddCommentIcon />
           </IconButton>
 
+          <button onClick={commentPopUP}>showComments</button>
+
           {showEdit && selected === index ? (
             <Editpost post={post} setSelected={setSelected} />
           ) : null}
@@ -132,11 +140,11 @@ function Post({ post, index }) {
         </CardActions>
       </Card>
 
-      {post.comments.map((post, index) => (
-        <Post post={post} key={post.id} index={index} />
-      ))}
-
-      {/* {post.comments.map((post) => post)} */}
+      {showComments
+        ? post.comments.map((post, index) => (
+            <PostRef post={post} key={post.id} index={index} />
+          ))
+        : null}
     </>
   );
 }
