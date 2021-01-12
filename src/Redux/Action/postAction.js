@@ -123,3 +123,18 @@ export const sendMessage = (userId, images) => async (dispatch) => {
     console.log(error);
   }
 };
+
+export const getPostById = (id) => async (dispatch) => {
+  try {
+    const response = await axios.get(`${url}/post/${id}`);
+    console.log(response.data);
+    if (response.status == 200)
+      dispatch({
+        type: 'GET_POSTBY_ID',
+        postData: response.data,
+        id,
+      });
+  } catch (error) {
+    console.log(error);
+  }
+};
