@@ -47,7 +47,6 @@ export const commentPost = (post) => async (dispatch) => {
 };
 
 export const editPost = (postData) => async (dispatch) => {
-  console.log(postData);
   try {
     const response = await axios.patch(`${url}/post/${postData.id}`, {
       message: postData.message,
@@ -77,7 +76,6 @@ export const removePost = (postId) => async (dispatch) => {
 };
 
 export const likePost = (postId, reaction) => async (dispatch) => {
-  console.log(postId);
   try {
     const response = await axios.put(`${url}/like/post/${postId}/${reaction}`);
     console.log(response.data);
@@ -91,7 +89,6 @@ export const likePost = (postId, reaction) => async (dispatch) => {
 };
 
 export const deleteReaction = (postId, reaction) => async (dispatch) => {
-  console.log(postId);
   try {
     const response = await axios.delete(
       `${url}/like/post/${postId}/${reaction}`
@@ -128,6 +125,7 @@ export const getPostById = (id) => async (dispatch) => {
   try {
     const response = await axios.get(`${url}/post/${id}`);
     console.log(response.data);
+
     if (response.status == 200)
       dispatch({
         type: 'GET_POSTBY_ID',
