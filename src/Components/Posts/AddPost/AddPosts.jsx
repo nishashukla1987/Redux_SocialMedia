@@ -31,7 +31,6 @@ export default function AddPost() {
     reader.addEventListener(
       'load',
       function () {
-        //dispatch(addPost(reader.result));
         setState({ ...state, open: false, images: reader.result });
       },
       false
